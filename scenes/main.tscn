@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://iejmmnbiii2j"]
+[gd_scene load_steps=4 format=3 uid="uid://iejmmnbiii2j"]
 
 [ext_resource type="PackedScene" uid="uid://b02po41vs2fo2" path="res://scenes/player.tscn" id="1_rlfoc"]
 [ext_resource type="Texture2D" uid="uid://cgja6ht0kspsg" path="res://art/icon.svg" id="2_inuim"]
+[ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="3_7of3u"]
 
 [node name="Main" type="Node2D"]
 
@@ -42,3 +43,10 @@ self_modulate = Color(0.666667, 0.0627451, 0, 1)
 position = Vector2(963, 418)
 scale = Vector2(4.17188, 1.71875)
 texture = ExtResource("2_inuim")
+
+[node name="HealthComponent" parent="EnemyPlaceholder" instance=ExtResource("3_7of3u")]
+starting_health = 10
+
+[connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin1Button" to="Player" method="_on_coin_1_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin2Button" to="Player" method="_on_coin_2_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin3Button" to="Player" method="_on_coin_3_button_pressed"]

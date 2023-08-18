@@ -1,5 +1,8 @@
 extends Node
 
+# basically this is just a component that can be added to any scene which dies or takes damage
+
+# emits these signals (that's all you really need to know)
 signal die
 signal take_damage
 
@@ -24,8 +27,3 @@ var current_health:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	current_health = starting_health
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
