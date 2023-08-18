@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b02po41vs2fo2"]
+
+[ext_resource type="Texture2D" uid="uid://cgja6ht0kspsg" path="res://art/icon.svg" id="1_an2ga"]
+[ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="2_uy2vp"]
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_an2ga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_uy2vp")]

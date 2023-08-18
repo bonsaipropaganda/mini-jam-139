@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://iejmmnbiii2j"]
+
+[ext_resource type="PackedScene" uid="uid://b02po41vs2fo2" path="res://scenes/player.tscn" id="1_rlfoc"]
+[ext_resource type="Texture2D" uid="uid://cgja6ht0kspsg" path="res://art/icon.svg" id="2_inuim"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_rlfoc")]
+position = Vector2(181, 494)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CoinsHBox" type="HBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 632.0
+offset_right = 186.0
+offset_bottom = 672.0
+
+[node name="Coin1Button" type="Button" parent="CanvasLayer/UI/CoinsHBox"]
+layout_mode = 2
+text = "Coin 1
+"
+
+[node name="Coin2Button" type="Button" parent="CanvasLayer/UI/CoinsHBox"]
+layout_mode = 2
+text = "Coin 2
+"
+
+[node name="Coin3Button" type="Button" parent="CanvasLayer/UI/CoinsHBox"]
+layout_mode = 2
+text = "Coin 3"
+
+[node name="EnemyPlaceholder" type="Sprite2D" parent="."]
+self_modulate = Color(0.666667, 0.0627451, 0, 1)
+position = Vector2(963, 418)
+scale = Vector2(4.17188, 1.71875)
+texture = ExtResource("2_inuim")
