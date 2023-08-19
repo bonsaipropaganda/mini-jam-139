@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://bxx46bwq0hdpw"]
-
-[ext_resource type="Script" path="res://BaseEnemyStats.gd" id="1_pcasf"]
-
-[resource]
-script = ExtResource("1_pcasf")
-EnemyName = "Enemy"
-health = 30
-damage = 20
