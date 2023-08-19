@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://iejmmnbiii2j"]
+[gd_scene load_steps=7 format=3 uid="uid://iejmmnbiii2j"]
 
 [ext_resource type="PackedScene" uid="uid://b02po41vs2fo2" path="res://scenes/player.tscn" id="1_rlfoc"]
 [ext_resource type="Script" path="res://code/UI/coins_hbox.gd" id="2_6e1k6"]
 [ext_resource type="Texture2D" uid="uid://b6tdgmy4ofyoc" path="res://art/Enemies/Willo.png" id="2_bh4ci"]
 [ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="3_7of3u"]
+[ext_resource type="Script" path="res://code/UI/last_action.gd" id="3_vnqwx"]
 [ext_resource type="Script" path="res://code/enemy_placeholder.gd" id="4_tpqmt"]
 
 [node name="Main" type="Node2D"]
@@ -42,13 +43,12 @@ text = "Coin 2
 layout_mode = 2
 text = "Coin 3"
 
-[node name="DealButton" type="Button" parent="CanvasLayer/UI"]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 467.0
-offset_right = 71.0
-offset_bottom = 498.0
-text = "Deal"
+[node name="Last Action" type="Label" parent="CanvasLayer"]
+offset_left = 338.0
+offset_top = 72.0
+offset_right = 884.0
+offset_bottom = 173.0
+script = ExtResource("3_vnqwx")
 
 [node name="EnemyPlaceholder" type="Sprite2D" parent="."]
 position = Vector2(921, 433)
@@ -62,4 +62,3 @@ starting_health = 10
 [connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin1Button" to="Player" method="_on_coin_1_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin2Button" to="Player" method="_on_coin_2_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin3Button" to="Player" method="_on_coin_3_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/DealButton" to="Player" method="_on_deal_button_pressed"]

@@ -6,8 +6,8 @@ signal dealt
 @export var deck_coin_scenes: Array[PackedScene]
 # this will be all of the coin scenes instanced
 var deck_coins = []
-var current_hand = []
 var discard_pile = []
+var current_hand = []
 
 # determines who is playing the cards and against who
 @export var deck_owner: Node2D
@@ -28,6 +28,11 @@ func _ready() -> void:
 		coin.deck_owner = deck_owner
 		coin.opponent = opponent
 
+func _process(delta: float) -> void:
+	if current_hand.is_empty():
+		deal()
+	if len(deck_coins) < 3:
+		shuffle_discard_in()
 
 func shuffle():
 	deck_coins.shuffle()
@@ -49,4 +54,15 @@ func reset_deck():
 func play(coin):
 	if current_hand:
 		current_hand[coin].flip()
-	else: print("empty hand")
+#	print("current_hand: " + str(current_hand))
+#	print("deck_coins:" + str(deck_coins))
+
+func finish_hand():
+	discard_pile.append_array(current_hand)
+	current_hand = []
+	deal()
+
+func shuffle_discard_in():
+	deck_coins.append_array(discard_pile)
+	discard_pile = []
+	shuffle()

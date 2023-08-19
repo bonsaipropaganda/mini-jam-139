@@ -4,3 +4,5 @@ extends Node
 const ALL_POSSIBLE_COINS = []
 
 var rng = RandomNumberGenerator.new()
+
+var last_action

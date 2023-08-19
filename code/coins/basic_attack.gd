@@ -16,6 +16,8 @@ func flip():
 
 func action_1():
 	opponent.health_component.current_health -= 3
+	Global.last_action = str(deck_owner.name) + "dealt 3 damage to " + str(opponent)
 
 func action_2():
 	opponent.health_component.current_health -= 1
+	Global.last_action = str(deck_owner.name) + "dealt 1 damage to " + str(opponent)

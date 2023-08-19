@@ -13,6 +13,9 @@ var player_hand = []:
 
 
 func set_button_labels():
-	coin_1_button.text = player_hand[0].name
-	coin_2_button.text = player_hand[1].name
-	coin_3_button.text = player_hand[2].name
+	if player_hand[0]:
+		coin_1_button.text = player_hand[0].name
+	if player_hand[1]:
+		coin_2_button.text = player_hand[1].name
+	if player_hand[2]:
+		coin_3_button.text = player_hand[2].name
