@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=3 uid="uid://bh7g0ayrjj5c2"]
+
+[ext_resource type="Texture2D" uid="uid://4fie8386rv0j" path="res://art/HealthBar/empty_0001.png" id="1_im0rt"]
+[ext_resource type="Texture2D" uid="uid://rw4po4etcafu" path="res://art/HealthBar/empty_0002.png" id="2_j26ke"]
+[ext_resource type="Texture2D" uid="uid://ck8122trmcjce" path="res://art/HealthBar/empty_0003.png" id="3_pw48j"]
+[ext_resource type="Texture2D" uid="uid://d0h0iwoittfte" path="res://art/HealthBar/empty_0004.png" id="4_2xavv"]
+[ext_resource type="Texture2D" uid="uid://cjdqd3c21k6j8" path="res://art/HealthBar/over_0001.png" id="5_nkofq"]
+[ext_resource type="Texture2D" uid="uid://bhr7m1wufafsb" path="res://art/HealthBar/over_0002.png" id="6_3tpnt"]
+[ext_resource type="Texture2D" uid="uid://c0lmfrdqtbycv" path="res://art/HealthBar/over_0003.png" id="7_k35bf"]
+[ext_resource type="Texture2D" uid="uid://br02rjmw6qeia" path="res://art/HealthBar/over_0004.png" id="8_fvghb"]
+[ext_resource type="Script" path="res://code/UI/health_bar.gd" id="9_6wbrh"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_4bntx"]
+frames = 4
+frame_0/texture = ExtResource("1_im0rt")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("2_j26ke")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("3_pw48j")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("4_2xavv")
+frame_3/duration = 0.5
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_am6i2"]
+frames = 4
+frame_0/texture = ExtResource("5_nkofq")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("6_3tpnt")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("7_k35bf")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("8_fvghb")
+frame_3/duration = 0.5
+
+[sub_resource type="Gradient" id="Gradient_7jx76"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.177914, 0.325153, 0.693252)
+colors = PackedColorArray(0.833681, 0, 0.0996185, 1, 0.829071, 0.485689, 0.0866036, 1, 0.830529, 0.680192, 0.0786497, 1, 0.151561, 0.603856, 9.62615e-07, 1)
+
+[node name="HealthBar" type="TextureProgressBar"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 75.0
+texture_under = SubResource("AnimatedTexture_4bntx")
+texture_progress = SubResource("AnimatedTexture_am6i2")
+tint_progress = Color(1, 1, 1, 0.392157)
+script = ExtResource("9_6wbrh")
+gradient = SubResource("Gradient_7jx76")
+
+[node name="CurrentHealth" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 25.0
+texture_progress = SubResource("AnimatedTexture_am6i2")

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Coin" load_steps=5 format=3 uid="uid://dlnjy5dwd3a7j"]
+
+[ext_resource type="Script" path="res://code/combat/actions/heal.gd" id="1_neog3"]
+[ext_resource type="Script" path="res://code/coin.gd" id="1_tbgob"]
+
+[sub_resource type="Resource" id="Resource_eqvtd"]
+script = ExtResource("1_neog3")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_p5rqs"]
+script = ExtResource("1_neog3")
+amount = 4
+
+[resource]
+script = ExtResource("1_tbgob")
+coin_name = "Basic Heal"
+description = ""
+head_weight = 0.8
+head_action = SubResource("Resource_eqvtd")
+tail_action = SubResource("Resource_p5rqs")

@@ -6,8 +6,11 @@ extends Node
 # emits these signals (that's all you really need to know)
 signal die
 signal take_damage
+signal health_changed(value: float)
 
-@export var starting_health: int
+@export var starting_health: int = 20
+@export var max_health: int = 20
+
 var current_health:
 	set(new_value):
 		var took_dmg = false
@@ -16,7 +19,8 @@ var current_health:
 			if new_value < current_health:
 				took_dmg = true
 		# sets the value like normal
-		current_health = new_value
+		current_health = min(new_value, max_health)
+		health_changed.emit(current_health)
 		# signal emitted after setting current_health
 		if took_dmg:
 			print(current_health)
