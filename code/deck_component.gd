@@ -1,5 +1,14 @@
 extends Node
 
+signal dealt
+
+# this will be all of the coin scenes in this deck
+@export var deck_coin_scenes: Array[PackedScene]
+# this will be all of the coin scenes instanced
+var deck_coins = []
+var current_hand = []
+var discard_pile = []
+
 # determines who is playing the cards and against who
 @export var deck_owner: Node2D
 var opponent:
@@ -10,30 +19,24 @@ var opponent:
 			coin.opponent = opponent
 var hand_size = 3
 
-# this will be all of the coins in this deck
-@export var deck_coins = []
-var current_hand = []
-var discard_pile = []
 
 func _ready() -> void:
+	for scene in deck_coin_scenes:
+		var coin_inst = scene.instantiate()
+		deck_coins.append(coin_inst)
 	for coin in deck_coins:
 		coin.deck_owner = deck_owner
 		coin.opponent = opponent
-	shuffle()
-	deal()
+
 
 func shuffle():
-	var new_order = []
-	for coin in deck_coins:
-		# re orders list of coins
-		var to_take_index = Global.rng.randi_range(0,len(deck_coins))
-		var coin_to_add = deck_coins.pop_at(to_take_index)
-		new_order.append(coin_to_add)
-	deck_coins = new_order
+	deck_coins.shuffle()
 
 func deal():
+	shuffle()
 	for i in hand_size:
 		current_hand.append(deck_coins.pop_front())
+	dealt.emit(current_hand)
 
 func reset_deck():
 	discard_pile.append_array(current_hand)
@@ -44,4 +47,6 @@ func reset_deck():
 	deal()
 
 func play(coin):
-	current_hand[coin].flip()
+	if current_hand:
+		current_hand[coin].flip()
+	else: print("empty hand")

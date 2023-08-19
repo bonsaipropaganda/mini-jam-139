@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b02po41vs2fo2"]
+[gd_scene load_steps=7 format=3 uid="uid://b02po41vs2fo2"]
 
 [ext_resource type="Texture2D" uid="uid://cgja6ht0kspsg" path="res://art/icon.svg" id="1_an2ga"]
 [ext_resource type="Script" path="res://code/player.gd" id="1_u7p6k"]
 [ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="2_uy2vp"]
 [ext_resource type="PackedScene" uid="uid://72im35ccx8i6" path="res://scenes/coins/deck_component.tscn" id="3_2ov1j"]
-[ext_resource type="PackedScene" uid="uid://bo4wuiscg2kpp" path="res://scenes/coins/basic_attack.tscn" id="5_iojgv"]
+[ext_resource type="PackedScene" uid="uid://pa52x2h81yvb" path="res://scenes/coins/basic_attack.tscn" id="5_iojgv"]
+[ext_resource type="PackedScene" uid="uid://chuhkajejuhk8" path="res://scenes/coins/coin_template.tscn" id="6_nl3vc"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_u7p6k")
@@ -15,7 +16,10 @@ texture = ExtResource("1_an2ga")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_uy2vp")]
+starting_health = 10
 
 [node name="DeckComponent" parent="." node_paths=PackedStringArray("deck_owner") instance=ExtResource("3_2ov1j")]
+deck_coin_scenes = Array[PackedScene]([ExtResource("5_iojgv"), ExtResource("5_iojgv"), ExtResource("6_nl3vc"), ExtResource("6_nl3vc"), ExtResource("6_nl3vc")])
 deck_owner = NodePath("..")
-deck_coins = [ExtResource("5_iojgv")]
+
+[connection signal="dealt" from="DeckComponent" to="." method="_on_deck_component_dealt"]

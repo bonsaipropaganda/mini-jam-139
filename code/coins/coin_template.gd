@@ -1,5 +1,4 @@
 extends Control
-class_name Coin
 
 var deck_owner
 var opponent
