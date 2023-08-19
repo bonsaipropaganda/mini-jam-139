@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 # node refs
+@onready var health_component = $HealthComponent
 @onready var coins_hbox = $"../CanvasLayer/UI/CoinsHBox"
 @onready var deck_component = $DeckComponent
 
 var current_hand = []
 
-@export var opponent: Node2D:
+@export var opponent: TextureRect:
 	# if the opponent changes update the deck's opponent variable
 	set(new_value):
 		opponent = new_value
