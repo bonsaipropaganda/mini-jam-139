@@ -1,17 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://iejmmnbiii2j"]
+[gd_scene load_steps=8 format=3 uid="uid://iejmmnbiii2j"]
 
 [ext_resource type="PackedScene" uid="uid://b02po41vs2fo2" path="res://scenes/player.tscn" id="1_rlfoc"]
+[ext_resource type="Script" path="res://code/combat/combat_manager.gd" id="2_0uygc"]
 [ext_resource type="Script" path="res://code/UI/coins_hbox.gd" id="2_6e1k6"]
 [ext_resource type="Texture2D" uid="uid://b6tdgmy4ofyoc" path="res://art/Enemies/Willo.png" id="2_bh4ci"]
 [ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="3_7of3u"]
 [ext_resource type="Script" path="res://code/UI/last_action.gd" id="3_vnqwx"]
-[ext_resource type="Script" path="res://code/enemy_placeholder.gd" id="4_tpqmt"]
+[ext_resource type="Script" path="res://code/enemies/enemy.gd" id="6_61pkq"]
 
 [node name="Main" type="Node2D"]
-
-[node name="Player" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("1_rlfoc")]
-position = Vector2(181, 494)
-opponent = NodePath("../EnemyPlaceholder")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -50,15 +47,25 @@ offset_right = 884.0
 offset_bottom = 173.0
 script = ExtResource("3_vnqwx")
 
+[node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("player", "enemy")]
+script = ExtResource("2_0uygc")
+player = NodePath("../Player")
+enemy = NodePath("../EnemyPlaceholder")
+
+[node name="Player" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("1_rlfoc")]
+position = Vector2(181, 494)
+opponent = NodePath("../EnemyPlaceholder")
+
 [node name="EnemyPlaceholder" type="Sprite2D" parent="."]
 position = Vector2(921, 433)
 scale = Vector2(0.382778, 0.579275)
 texture = ExtResource("2_bh4ci")
-script = ExtResource("4_tpqmt")
+script = ExtResource("6_61pkq")
 
 [node name="HealthComponent" parent="EnemyPlaceholder" instance=ExtResource("3_7of3u")]
 starting_health = 10
 
-[connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin1Button" to="Player" method="_on_coin_1_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin2Button" to="Player" method="_on_coin_2_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin3Button" to="Player" method="_on_coin_3_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin1Button" to="Player" method="play_coin" binds= [0]]
+[connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin2Button" to="Player" method="play_coin" binds= [1]]
+[connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin3Button" to="Player" method="play_coin" binds= [2]]
+[connection signal="end_player_turn" from="CombatManager" to="EnemyPlaceholder" method="play_turn"]

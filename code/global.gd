@@ -1,8 +1,9 @@
 extends Node
 
+
 # list of all possible coins. Might not end up needing this
 const ALL_POSSIBLE_COINS = []
 
-var rng = RandomNumberGenerator.new()
+var rng := RandomNumberGenerator.new()
 
-var last_action
+var last_action: String

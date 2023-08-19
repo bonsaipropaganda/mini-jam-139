@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Coin" load_steps=5 format=3 uid="uid://dn6a7rjh1wo52"]
+
+[ext_resource type="Script" path="res://code/combat/actions/deal_damage.gd" id="1_nipwl"]
+[ext_resource type="Script" path="res://code/coin.gd" id="1_waa5w"]
+
+[sub_resource type="Resource" id="Resource_jp3dq"]
+script = ExtResource("1_nipwl")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_88vvy"]
+script = ExtResource("1_nipwl")
+amount = 1
+
+[resource]
+script = ExtResource("1_waa5w")
+coin_name = "Basic Attack"
+description = ""
+head_weight = 0.5
+head_action = SubResource("Resource_jp3dq")
+tail_action = SubResource("Resource_88vvy")

@@ -1,3 +1,4 @@
+class_name HealthComponent
 extends Node
 
 # basically this is just a component that can be added to any scene which dies or takes damage
