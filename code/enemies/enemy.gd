@@ -12,5 +12,6 @@ signal do_action(action: Action)
 
 
 func play_turn() -> void:
+	await get_tree().create_timer(0.5).timeout
 	do_action.emit(NullAction.new())
 

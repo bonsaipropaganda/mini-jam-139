@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b02po41vs2fo2" path="res://scenes/player.tscn" id="1_rlfoc"]
 [ext_resource type="Script" path="res://code/combat/combat_manager.gd" id="2_0uygc"]
+[ext_resource type="PackedScene" uid="uid://pdhajmhtyjha" path="res://scenes/UI/combat_history.tscn" id="2_5qwly"]
 [ext_resource type="Script" path="res://code/UI/coins_hbox.gd" id="2_6e1k6"]
 [ext_resource type="Texture2D" uid="uid://b6tdgmy4ofyoc" path="res://art/Enemies/Willo.png" id="2_bh4ci"]
 [ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="3_7of3u"]
-[ext_resource type="Script" path="res://code/UI/last_action.gd" id="3_vnqwx"]
 [ext_resource type="Script" path="res://code/enemies/enemy.gd" id="6_61pkq"]
 
 [node name="Main" type="Node2D"]
@@ -40,12 +40,11 @@ text = "Coin 2
 layout_mode = 2
 text = "Coin 3"
 
-[node name="Last Action" type="Label" parent="CanvasLayer"]
+[node name="CombatHistory" parent="CanvasLayer/UI" instance=ExtResource("2_5qwly")]
+layout_mode = 1
 offset_left = 338.0
-offset_top = 72.0
-offset_right = 884.0
-offset_bottom = 173.0
-script = ExtResource("3_vnqwx")
+offset_right = 844.0
+offset_bottom = 133.0
 
 [node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("player", "enemy")]
 script = ExtResource("2_0uygc")

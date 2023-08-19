@@ -17,6 +17,9 @@ func _ready() -> void:
 
 
 func set_enemy(new_enemy: Node) -> void:
+	if not is_player_turn:
+		enemy.do_action.disconnect(_play_action)
+		new_enemy.do_action.connect(_play_action)
 	enemy = new_enemy
 
 
