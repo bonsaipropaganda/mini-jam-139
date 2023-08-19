@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://iejmmnbiii2j"]
+[gd_scene load_steps=5 format=3 uid="uid://iejmmnbiii2j"]
 
 [ext_resource type="PackedScene" uid="uid://b02po41vs2fo2" path="res://scenes/player.tscn" id="1_rlfoc"]
-[ext_resource type="Texture2D" uid="uid://cgja6ht0kspsg" path="res://art/icon.svg" id="2_inuim"]
+[ext_resource type="Texture2D" uid="uid://b6tdgmy4ofyoc" path="res://art/Enemies/Willo.png" id="2_bh4ci"]
 [ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="3_7of3u"]
+[ext_resource type="Script" path="res://code/EnemyPlaceholder.gd" id="3_t86m0"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_rlfoc")]
+[node name="Player" parent="." node_paths=PackedStringArray("opponent") instance=ExtResource("1_rlfoc")]
 position = Vector2(181, 494)
+opponent = NodePath("../EnemyPlaceholder")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -39,10 +41,10 @@ layout_mode = 2
 text = "Coin 3"
 
 [node name="EnemyPlaceholder" type="Sprite2D" parent="."]
-self_modulate = Color(0.666667, 0.0627451, 0, 1)
-position = Vector2(963, 418)
-scale = Vector2(4.17188, 1.71875)
-texture = ExtResource("2_inuim")
+position = Vector2(921, 433)
+scale = Vector2(0.382778, 0.579275)
+texture = ExtResource("2_bh4ci")
+script = ExtResource("3_t86m0")
 
 [node name="HealthComponent" parent="EnemyPlaceholder" instance=ExtResource("3_7of3u")]
 starting_health = 10

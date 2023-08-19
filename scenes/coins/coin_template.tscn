@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://chuhkajejuhk8"]
 
-[ext_resource type="Script" path="res://code/coin_template.gd" id="1_s0chi"]
+[ext_resource type="Script" path="res://code/coins/coin_template.gd" id="1_s0chi"]
 [ext_resource type="Texture2D" uid="uid://cgja6ht0kspsg" path="res://art/icon.svg" id="2_na1wx"]
 
 [node name="CoinTemplate" type="Control"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bo4wuiscg2kpp"]
+[gd_scene load_steps=3 format=3 uid="uid://pa52x2h81yvb"]
 
 [ext_resource type="Script" path="res://code/coins/basic_attack.gd" id="1_qc4ow"]
 [ext_resource type="Texture2D" uid="uid://cgja6ht0kspsg" path="res://art/icon.svg" id="2_r4h47"]

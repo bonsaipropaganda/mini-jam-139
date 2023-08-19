@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var opponent:
+@export var opponent: Node2D:
 	# if the opponent changes update the deck's opponent variable
 	set(new_value):
 		opponent = new_value
@@ -8,12 +8,12 @@ var opponent:
 
 
 func _on_coin_1_button_pressed() -> void:
-	$DeckComponent.play(1)
+	$DeckComponent.play(0)
 
 
 func _on_coin_2_button_pressed() -> void:
-	$DeckComponent.play(2)
+	$DeckComponent.play(1)
 
 
 func _on_coin_3_button_pressed() -> void:
-	$DeckComponent.play(3)
+	$DeckComponent.play(2)

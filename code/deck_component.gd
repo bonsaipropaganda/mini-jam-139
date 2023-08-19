@@ -1,5 +1,12 @@
 extends Node
 
+# this will be all of the coin scenes in this deck
+@export var deck_coin_scenes: Array[PackedScene]
+# this will be all of the coin scenes instanced
+var deck_coins = []
+var current_hand = []
+var discard_pile = []
+
 # determines who is playing the cards and against who
 @export var deck_owner: Node2D
 var opponent:
@@ -10,12 +17,11 @@ var opponent:
 			coin.opponent = opponent
 var hand_size = 3
 
-# this will be all of the coins in this deck
-@export var deck_coins = []
-var current_hand = []
-var discard_pile = []
 
 func _ready() -> void:
+	for scene in deck_coin_scenes:
+		var coin_inst = scene.instantiate()
+		deck_coins.append(coin_inst)
 	for coin in deck_coins:
 		coin.deck_owner = deck_owner
 		coin.opponent = opponent
@@ -23,13 +29,7 @@ func _ready() -> void:
 	deal()
 
 func shuffle():
-	var new_order = []
-	for coin in deck_coins:
-		# re orders list of coins
-		var to_take_index = Global.rng.randi_range(0,len(deck_coins))
-		var coin_to_add = deck_coins.pop_at(to_take_index)
-		new_order.append(coin_to_add)
-	deck_coins = new_order
+	deck_coins.shuffle()
 
 func deal():
 	for i in hand_size:
