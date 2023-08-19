@@ -16,7 +16,10 @@ texture = ExtResource("1_an2ga")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_uy2vp")]
+starting_health = 10
 
 [node name="DeckComponent" parent="." node_paths=PackedStringArray("deck_owner") instance=ExtResource("3_2ov1j")]
-deck_coin_scenes = [ExtResource("5_iojgv"), ExtResource("5_iojgv"), ExtResource("6_nl3vc"), ExtResource("6_nl3vc"), ExtResource("6_nl3vc")]
+deck_coin_scenes = Array[PackedScene]([ExtResource("5_iojgv"), ExtResource("5_iojgv"), ExtResource("6_nl3vc"), ExtResource("6_nl3vc"), ExtResource("6_nl3vc")])
 deck_owner = NodePath("..")
+
+[connection signal="dealt" from="DeckComponent" to="." method="_on_deck_component_dealt"]
