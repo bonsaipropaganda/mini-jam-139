@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://x32nf6rqxaa5"]
+[gd_scene load_steps=7 format=3 uid="uid://x32nf6rqxaa5"]
 
 [ext_resource type="Script" path="res://code/UI/choice_scene_coin.gd" id="1_ipoeb"]
 [ext_resource type="Resource" uid="uid://dn6a7rjh1wo52" path="res://code/resources/coins/basic_attack.tres" id="2_leuck"]
 [ext_resource type="Resource" uid="uid://dlnjy5dwd3a7j" path="res://code/resources/coins/basic_heal.tres" id="3_cf7iv"]
 [ext_resource type="Resource" uid="uid://cwtxmqjixt7v" path="res://code/resources/coins/risky_attack.tres" id="4_1nfus"]
 [ext_resource type="Resource" uid="uid://hqck15aquvvj" path="res://code/resources/coins/strong_attack.tres" id="5_jfrsj"]
-[ext_resource type="Script" path="res://code/UI/coin_button.gd" id="6_mc4i8"]
-[ext_resource type="Resource" uid="uid://y50r5hl6yhsd" path="res://code/resources/coins/fire_punch.tres" id="6_vrdgo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_o3lwo"]
 font_color = Color(0, 0, 0, 1)
@@ -19,7 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ipoeb")
-possible_coins = Array[Resource("res://code/coin.gd")]([ExtResource("2_leuck"), ExtResource("3_cf7iv"), ExtResource("4_1nfus"), ExtResource("5_jfrsj"), ExtResource("6_vrdgo")])
+possible_coins = Array[Resource("res://code/coin.gd")]([ExtResource("2_leuck"), ExtResource("3_cf7iv"), ExtResource("4_1nfus"), ExtResource("5_jfrsj")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -35,16 +33,12 @@ label_settings = SubResource("LabelSettings_o3lwo")
 layout_mode = 2
 
 [node name="Choice1Button" type="Button" parent="VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Example 1"
-script = ExtResource("6_mc4i8")
 
 [node name="Choice2Button" type="Button" parent="VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
 layout_mode = 2
 text = "Example 2"
-script = ExtResource("6_mc4i8")
 
-[connection signal="coin_selected" from="VBoxContainer/HBoxContainer/Choice1Button" to="." method="_select_coin"]
-[connection signal="coin_selected" from="VBoxContainer/HBoxContainer/Choice2Button" to="." method="_select_coin"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Choice1Button" to="." method="_on_choice_1_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Choice2Button" to="." method="_on_choice_2_button_pressed"]

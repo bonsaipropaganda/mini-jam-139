@@ -12,3 +12,10 @@ extends Resource
 func apply(source: Node, destination: Node) -> void:
 	Global.push_action("%s tried to do something but it failed" % [source.name])
 
+
+## Returns the health component of a given node (will error if there are none). 
+## Health components are expected to be called "HealthComponent" because I'm
+## lazy ;).
+static func get_health_component(node: Node) -> HealthComponent:
+	return node.get_node("HealthComponent")
+

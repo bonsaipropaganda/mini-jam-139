@@ -29,7 +29,7 @@ func _ready() -> void:
 	
 	var parent: Node = get_parent()
 	if parent.has_signal("do_action"):
-		do_action.connect(func(act): parent._play_action(act.duplicate(true)))
+		do_action.connect(func(act): parent.do_action.emit(act))
 
 
 func _enter_tree() -> void:

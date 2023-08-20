@@ -1,55 +1,58 @@
-[gd_scene load_steps=18 format=3 uid="uid://8joir45it7pu"]
+[gd_scene load_steps=21 format=3 uid="uid://8joir45it7pu"]
 
 [ext_resource type="Script" path="res://code/UI/map/map.gd" id="1_mxbdd"]
 [ext_resource type="Texture2D" uid="uid://buho10l4dd32k" path="res://art/Map.png" id="2_cyvnd"]
 [ext_resource type="Script" path="res://code/UI/map/map_node.gd" id="3_k0n23"]
 [ext_resource type="PackedScene" uid="uid://cqmtn0q37ttcv" path="res://scenes/enemies/Willo.tscn" id="4_1gk8b"]
+[ext_resource type="PackedScene" uid="uid://cbu01ksbwv3hu" path="res://scenes/enemies/gnome.tscn" id="5_0uqwg"]
 [ext_resource type="Script" path="res://code/UI/map/combat_encounter.gd" id="5_ro7sn"]
-[ext_resource type="Script" path="res://code/UI/map/random_encounter.gd" id="6_kqypk"]
+[ext_resource type="PackedScene" uid="uid://du3pvhmvnlf6a" path="res://scenes/enemies/hunter.tscn" id="6_jpyso"]
+[ext_resource type="PackedScene" uid="uid://bwfhs8dptfdq5" path="res://scenes/enemies/Chest.tscn" id="8_ebmm0"]
+[ext_resource type="PackedScene" uid="uid://dpi0wg1olwydk" path="res://scenes/enemies/Goblin.tscn" id="9_tk4ys"]
 
 [sub_resource type="Resource" id="Resource_6ew0m"]
 script = ExtResource("5_ro7sn")
-possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b"), ExtResource("9_tk4ys"), ExtResource("4_1gk8b")])
 
-[sub_resource type="Resource" id="Resource_t61un"]
+[sub_resource type="Resource" id="Resource_yyk4o"]
 script = ExtResource("5_ro7sn")
-possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+possible_enemies = Array[PackedScene]([ExtResource("8_ebmm0"), ExtResource("5_0uqwg"), ExtResource("9_tk4ys"), ExtResource("4_1gk8b")])
 
-[sub_resource type="Resource" id="Resource_y4mmi"]
-script = ExtResource("6_kqypk")
-possible_encounters = Array[Resource("res://code/UI/map/encounter.gd")]([SubResource("Resource_t61un")])
-
-[sub_resource type="Resource" id="Resource_5cdyp"]
+[sub_resource type="Resource" id="Resource_ydwo5"]
 script = ExtResource("5_ro7sn")
-possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+possible_enemies = Array[PackedScene]([ExtResource("8_ebmm0")])
 
-[sub_resource type="Resource" id="Resource_ir2hx"]
-script = ExtResource("6_kqypk")
-possible_encounters = Array[Resource("res://code/UI/map/encounter.gd")]([SubResource("Resource_5cdyp")])
-
-[sub_resource type="Resource" id="Resource_k4box"]
+[sub_resource type="Resource" id="Resource_8nopt"]
 script = ExtResource("5_ro7sn")
-possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+possible_enemies = Array[PackedScene]([ExtResource("8_ebmm0")])
 
-[sub_resource type="Resource" id="Resource_5ix7r"]
-script = ExtResource("6_kqypk")
-possible_encounters = Array[Resource("res://code/UI/map/encounter.gd")]([SubResource("Resource_k4box")])
+[sub_resource type="Resource" id="Resource_6ce1f"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("8_ebmm0"), ExtResource("5_0uqwg"), ExtResource("9_tk4ys"), ExtResource("4_1gk8b")])
+
+[sub_resource type="Resource" id="Resource_hsi63"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("8_ebmm0"), ExtResource("5_0uqwg"), ExtResource("9_tk4ys"), ExtResource("4_1gk8b")])
 
 [sub_resource type="Resource" id="Resource_2kwg0"]
 script = ExtResource("5_ro7sn")
-possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+possible_enemies = Array[PackedScene]([ExtResource("5_0uqwg"), ExtResource("4_1gk8b"), ExtResource("5_0uqwg")])
 
-[sub_resource type="Resource" id="Resource_xp0md"]
+[sub_resource type="Resource" id="Resource_jlkia"]
 script = ExtResource("5_ro7sn")
-possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
-
-[sub_resource type="Resource" id="Resource_y1jn8"]
-script = ExtResource("6_kqypk")
-possible_encounters = Array[Resource("res://code/UI/map/encounter.gd")]([SubResource("Resource_xp0md")])
+possible_enemies = Array[PackedScene]([ExtResource("5_0uqwg"), ExtResource("9_tk4ys"), ExtResource("4_1gk8b"), ExtResource("8_ebmm0")])
 
 [sub_resource type="Resource" id="Resource_xpwwg"]
 script = ExtResource("5_ro7sn")
-possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b"), ExtResource("9_tk4ys"), ExtResource("9_tk4ys"), ExtResource("5_0uqwg")])
+
+[sub_resource type="Resource" id="Resource_8wj64"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("8_ebmm0")])
+
+[sub_resource type="Resource" id="Resource_2igkf"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("6_jpyso")])
 
 [node name="Map" type="Control" node_paths=PackedStringArray("starting_nodes")]
 layout_mode = 3
@@ -97,7 +100,7 @@ offset_right = 460.0
 offset_bottom = 467.0
 script = ExtResource("3_k0n23")
 next_nodes = [NodePath("../ChestLeft")]
-encounter = SubResource("Resource_y4mmi")
+encounter = SubResource("Resource_yyk4o")
 
 [node name="ChestLeft" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
 layout_mode = 0
@@ -107,6 +110,7 @@ offset_right = 484.0
 offset_bottom = 318.0
 script = ExtResource("3_k0n23")
 next_nodes = [NodePath("../Boss")]
+encounter = SubResource("Resource_ydwo5")
 
 [node name="ChestMiddle" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
 layout_mode = 0
@@ -116,6 +120,7 @@ offset_right = 627.0
 offset_bottom = 528.0
 script = ExtResource("3_k0n23")
 next_nodes = [NodePath("../QuestionMiddle1")]
+encounter = SubResource("Resource_8nopt")
 
 [node name="QuestionMiddle1" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
 layout_mode = 0
@@ -125,7 +130,7 @@ offset_right = 598.0
 offset_bottom = 419.0
 script = ExtResource("3_k0n23")
 next_nodes = [NodePath("../QuestionMiddle2")]
-encounter = SubResource("Resource_ir2hx")
+encounter = SubResource("Resource_6ce1f")
 
 [node name="QuestionMiddle2" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
 layout_mode = 0
@@ -135,7 +140,7 @@ offset_right = 580.0
 offset_bottom = 303.0
 script = ExtResource("3_k0n23")
 next_nodes = [NodePath("../Boss")]
-encounter = SubResource("Resource_5ix7r")
+encounter = SubResource("Resource_hsi63")
 
 [node name="EncounterRight1" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
 layout_mode = 0
@@ -155,7 +160,7 @@ offset_right = 708.0
 offset_bottom = 376.0
 script = ExtResource("3_k0n23")
 next_nodes = [NodePath("../EncounterRight2"), NodePath("../QuestionMiddle2")]
-encounter = SubResource("Resource_y1jn8")
+encounter = SubResource("Resource_jlkia")
 
 [node name="EncounterRight2" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
 layout_mode = 0
@@ -175,6 +180,7 @@ offset_right = 708.0
 offset_bottom = 211.0
 script = ExtResource("3_k0n23")
 next_nodes = [NodePath("../Boss")]
+encounter = SubResource("Resource_8wj64")
 
 [node name="Boss" type="Button" parent="MapNodes"]
 layout_mode = 0
@@ -183,3 +189,4 @@ offset_top = 66.0
 offset_right = 611.0
 offset_bottom = 121.0
 script = ExtResource("3_k0n23")
+encounter = SubResource("Resource_2igkf")

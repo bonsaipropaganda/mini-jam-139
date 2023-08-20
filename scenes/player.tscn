@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://dn6a7rjh1wo52" path="res://code/resources/coins/basic_attack.tres" id="5_r0pke"]
 [ext_resource type="Resource" uid="uid://cwtxmqjixt7v" path="res://code/resources/coins/risky_attack.tres" id="6_hi8ib"]
 [ext_resource type="Resource" uid="uid://dlnjy5dwd3a7j" path="res://code/resources/coins/basic_heal.tres" id="7_r8ms5"]
-[ext_resource type="PackedScene" path="res://scenes/entity_animator.tscn" id="8_xhtn5"]
+[ext_resource type="PackedScene" uid="uid://i3fwwekparef" path="res://scenes/entity_animator.tscn" id="8_xhtn5"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_u7p6k")
@@ -19,6 +19,8 @@ texture = ExtResource("2_bu68y")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_uy2vp")]
+starting_health = 40
+max_health = 40
 
 [node name="DeckComponent" parent="." node_paths=PackedStringArray("deck_owner") instance=ExtResource("3_2ov1j")]
 coins = Array[Resource("res://code/coin.gd")]([ExtResource("5_r0pke"), ExtResource("5_r0pke"), ExtResource("5_r0pke"), ExtResource("5_r0pke"), ExtResource("5_r0pke"), ExtResource("5_r0pke"), ExtResource("6_hi8ib"), ExtResource("6_hi8ib"), ExtResource("6_hi8ib"), ExtResource("7_r8ms5")])
@@ -26,6 +28,7 @@ deck_owner = NodePath("..")
 
 [node name="EntityAnimator" parent="." instance=ExtResource("8_xhtn5")]
 
+[connection signal="player_died" from="." to="." method="_on_player_died"]
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
 [connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]
 [connection signal="dealt" from="DeckComponent" to="." method="_on_deck_component_dealt"]

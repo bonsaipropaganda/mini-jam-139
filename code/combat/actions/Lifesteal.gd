@@ -9,9 +9,9 @@ extends Action
 
 
 func apply(source: Node, destination: Node) -> void:
-	var health: HealthComponent = Global.get_health_component(destination)
+	var health: HealthComponent = get_health_component(destination)
 	health.current_health -= amount
-	var enemyhealth: HealthComponent = Global.get_health_component(source)
+	var enemyhealth: HealthComponent = get_health_component(source)
 	enemyhealth.current_health += heal_amount
 	
 	Global.push_action("%s healed themselves %s hp" % [source.name, heal_amount])

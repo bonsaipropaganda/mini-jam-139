@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkf13w78s04vh"]
+[gd_scene load_steps=6 format=3 uid="uid://dkf13w78s04vh"]
 
 [ext_resource type="Script" path="res://code/battlefield.gd" id="1_5g3mx"]
 [ext_resource type="PackedScene" uid="uid://x32nf6rqxaa5" path="res://scenes/UI/choice_scene_coin.tscn" id="2_nbfrv"]
 [ext_resource type="Script" path="res://code/UI/coins_hbox.gd" id="3_fm4v5"]
 [ext_resource type="PackedScene" uid="uid://bh7g0ayrjj5c2" path="res://scenes/UI/health_bar.tscn" id="4_51fdp"]
 [ext_resource type="PackedScene" uid="uid://pdhajmhtyjha" path="res://scenes/UI/combat_history.tscn" id="5_tf41l"]
-[ext_resource type="Script" path="res://code/UI/coin_button.gd" id="6_fc31l"]
 
 [node name="Battlefield" type="Node2D"]
 script = ExtResource("1_5g3mx")
@@ -76,20 +75,17 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Coin 1
 "
-script = ExtResource("6_fc31l")
 
 [node name="Coin2Button" type="Button" parent="UI/UI/CoinsHBox"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Coin 2
 "
-script = ExtResource("6_fc31l")
 
 [node name="Coin3Button" type="Button" parent="UI/UI/CoinsHBox"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Coin 3"
-script = ExtResource("6_fc31l")
 
 [node name="DiscardLabel" type="Label" parent="UI/UI/CoinsHBox"]
 layout_mode = 2

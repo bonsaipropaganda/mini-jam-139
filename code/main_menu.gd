@@ -11,8 +11,3 @@ func _ready() -> void:
 func _on_start_button_pressed() -> void:
 	MusicManager.fade("out", MusicManager.menu_music)
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
-
-
-func _on_volume_slider_value_changed(value: float) -> void:
-	var bus := AudioServer.get_bus_index(&"Master")
-	AudioServer.set_bus_volume_db(bus, linear_to_db(value))
