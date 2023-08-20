@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkf13w78s04vh"]
+
+[ext_resource type="Script" path="res://code/battlefield.gd" id="1_5g3mx"]
+[ext_resource type="PackedScene" uid="uid://x32nf6rqxaa5" path="res://scenes/UI/choice_scene_coin.tscn" id="2_nbfrv"]
+[ext_resource type="Script" path="res://code/UI/coins_hbox.gd" id="3_fm4v5"]
+[ext_resource type="PackedScene" uid="uid://bh7g0ayrjj5c2" path="res://scenes/UI/health_bar.tscn" id="4_51fdp"]
+[ext_resource type="PackedScene" uid="uid://pdhajmhtyjha" path="res://scenes/UI/combat_history.tscn" id="5_tf41l"]
+
+[node name="Battlefield" type="Node2D"]
+script = ExtResource("1_5g3mx")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ChoiceSceneCoin" parent="UI/UI" instance=ExtResource("2_nbfrv")]
+visible = false
+layout_mode = 1
+offset_left = 288.0
+offset_top = 182.0
+offset_right = 288.0
+offset_bottom = 182.0
+
+[node name="CoinsHBox" type="HBoxContainer" parent="UI/UI"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 607.0
+offset_right = 399.0
+offset_bottom = 647.0
+script = ExtResource("3_fm4v5")
+
+[node name="DeckLabel" type="Label" parent="UI/UI/CoinsHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Coins in deck: "
+
+[node name="Coin1Button" type="Button" parent="UI/UI/CoinsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Coin 1
+"
+
+[node name="Coin2Button" type="Button" parent="UI/UI/CoinsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Coin 2
+"
+
+[node name="Coin3Button" type="Button" parent="UI/UI/CoinsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Coin 3"
+
+[node name="DiscardLabel" type="Label" parent="UI/UI/CoinsHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Discard pile:"
+
+[node name="PlayerHealthBar" parent="UI/UI" instance=ExtResource("4_51fdp")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 64.0
+offset_top = 331.0
+offset_right = 320.0
+offset_bottom = 395.0
+
+[node name="EnemyHealthBar" parent="UI/UI" instance=ExtResource("4_51fdp")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 1218.0
+offset_top = 550.0
+offset_right = 1474.0
+offset_bottom = 614.0
+scale = Vector2(-1, 1)
+
+[node name="CurrentCoins" type="Label" parent="UI/UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Current coins:"
+
+[node name="CombatHistory" parent="UI/UI" instance=ExtResource("5_tf41l")]
+layout_mode = 1
+offset_left = 320.0
+offset_right = 920.0
+offset_bottom = 140.0
+message_spacing = null
+history_length = null
+
+[node name="PlayerLocation" type="Node2D" parent="."]
+position = Vector2(184, 526)
+
+[node name="EnemyLocation" type="Node2D" parent="."]
+position = Vector2(978, 498)

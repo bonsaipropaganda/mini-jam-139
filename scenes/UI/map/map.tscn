@@ -1,0 +1,185 @@
+[gd_scene load_steps=18 format=3 uid="uid://8joir45it7pu"]
+
+[ext_resource type="Script" path="res://code/UI/map/map.gd" id="1_mxbdd"]
+[ext_resource type="Texture2D" uid="uid://buho10l4dd32k" path="res://art/Map.png" id="2_cyvnd"]
+[ext_resource type="Script" path="res://code/UI/map/map_node.gd" id="3_k0n23"]
+[ext_resource type="PackedScene" uid="uid://cqmtn0q37ttcv" path="res://scenes/enemies/Willo.tscn" id="4_1gk8b"]
+[ext_resource type="Script" path="res://code/UI/map/combat_encounter.gd" id="5_ro7sn"]
+[ext_resource type="Script" path="res://code/UI/map/random_encounter.gd" id="6_kqypk"]
+
+[sub_resource type="Resource" id="Resource_6ew0m"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+
+[sub_resource type="Resource" id="Resource_t61un"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+
+[sub_resource type="Resource" id="Resource_y4mmi"]
+script = ExtResource("6_kqypk")
+possible_encounters = Array[Resource("res://code/UI/map/encounter.gd")]([SubResource("Resource_t61un")])
+
+[sub_resource type="Resource" id="Resource_5cdyp"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+
+[sub_resource type="Resource" id="Resource_ir2hx"]
+script = ExtResource("6_kqypk")
+possible_encounters = Array[Resource("res://code/UI/map/encounter.gd")]([SubResource("Resource_5cdyp")])
+
+[sub_resource type="Resource" id="Resource_k4box"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+
+[sub_resource type="Resource" id="Resource_5ix7r"]
+script = ExtResource("6_kqypk")
+possible_encounters = Array[Resource("res://code/UI/map/encounter.gd")]([SubResource("Resource_k4box")])
+
+[sub_resource type="Resource" id="Resource_2kwg0"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+
+[sub_resource type="Resource" id="Resource_xp0md"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+
+[sub_resource type="Resource" id="Resource_y1jn8"]
+script = ExtResource("6_kqypk")
+possible_encounters = Array[Resource("res://code/UI/map/encounter.gd")]([SubResource("Resource_xp0md")])
+
+[sub_resource type="Resource" id="Resource_xpwwg"]
+script = ExtResource("5_ro7sn")
+possible_enemies = Array[PackedScene]([ExtResource("4_1gk8b")])
+
+[node name="Map" type="Control" node_paths=PackedStringArray("starting_nodes")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mxbdd")
+starting_nodes = [NodePath("MapNodes/EncounterLeft1"), NodePath("MapNodes/ChestMiddle"), NodePath("MapNodes/EncounterRight1")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cyvnd")
+expand_mode = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="TextureRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MapNodes" type="Control" parent="."]
+anchors_preset = 0
+
+[node name="EncounterLeft1" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
+layout_mode = 0
+offset_left = 443.0
+offset_top = 525.0
+offset_right = 486.0
+offset_bottom = 574.0
+script = ExtResource("3_k0n23")
+next_nodes = [NodePath("../QuestionLeft1")]
+encounter = SubResource("Resource_6ew0m")
+
+[node name="QuestionLeft1" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 418.0
+offset_right = 460.0
+offset_bottom = 467.0
+script = ExtResource("3_k0n23")
+next_nodes = [NodePath("../ChestLeft")]
+encounter = SubResource("Resource_y4mmi")
+
+[node name="ChestLeft" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 276.0
+offset_right = 484.0
+offset_bottom = 318.0
+script = ExtResource("3_k0n23")
+next_nodes = [NodePath("../Boss")]
+
+[node name="ChestMiddle" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 486.0
+offset_right = 627.0
+offset_bottom = 528.0
+script = ExtResource("3_k0n23")
+next_nodes = [NodePath("../QuestionMiddle1")]
+
+[node name="QuestionMiddle1" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
+layout_mode = 0
+offset_left = 555.0
+offset_top = 370.0
+offset_right = 598.0
+offset_bottom = 419.0
+script = ExtResource("3_k0n23")
+next_nodes = [NodePath("../QuestionMiddle2")]
+encounter = SubResource("Resource_ir2hx")
+
+[node name="QuestionMiddle2" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
+layout_mode = 0
+offset_left = 537.0
+offset_top = 254.0
+offset_right = 580.0
+offset_bottom = 303.0
+script = ExtResource("3_k0n23")
+next_nodes = [NodePath("../Boss")]
+encounter = SubResource("Resource_5ix7r")
+
+[node name="EncounterRight1" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
+layout_mode = 0
+offset_left = 638.0
+offset_top = 523.0
+offset_right = 681.0
+offset_bottom = 572.0
+script = ExtResource("3_k0n23")
+next_nodes = [NodePath("../QuestionRight1")]
+encounter = SubResource("Resource_2kwg0")
+
+[node name="QuestionRight1" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 327.0
+offset_right = 708.0
+offset_bottom = 376.0
+script = ExtResource("3_k0n23")
+next_nodes = [NodePath("../EncounterRight2"), NodePath("../QuestionMiddle2")]
+encounter = SubResource("Resource_y1jn8")
+
+[node name="EncounterRight2" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 219.0
+offset_right = 707.0
+offset_bottom = 268.0
+script = ExtResource("3_k0n23")
+next_nodes = [NodePath("../ChestRight")]
+encounter = SubResource("Resource_xpwwg")
+
+[node name="ChestRight" type="Button" parent="MapNodes" node_paths=PackedStringArray("next_nodes")]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 169.0
+offset_right = 708.0
+offset_bottom = 211.0
+script = ExtResource("3_k0n23")
+next_nodes = [NodePath("../Boss")]
+
+[node name="Boss" type="Button" parent="MapNodes"]
+layout_mode = 0
+offset_left = 527.0
+offset_top = 66.0
+offset_right = 611.0
+offset_bottom = 121.0
+script = ExtResource("3_k0n23")

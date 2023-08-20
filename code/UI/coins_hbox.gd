@@ -20,6 +20,7 @@ func set_button_labels():
 	if player_hand[2]:
 		coin_3_button.text = player_hand[2].coin_name
 
+
 func _process(delta: float) -> void:
 	$DeckLabel.text = "Remaining coins: " + str(Global.player_deck_size)
 	$DiscardLabel.text = "Discarded coins: " + str(Global.player_discard_size)

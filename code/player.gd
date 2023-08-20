@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 
+signal player_died
 signal do_action(action: Action)
 
 
 # node refs
-@onready var coins_hbox = $"../CanvasLayer/UI/CoinsHBox"
+var coins_hbox: HBoxContainer
 @onready var deck_component: DeckComponent = $DeckComponent
 
 var current_hand = []
@@ -38,3 +39,7 @@ func update_deck_ui():
 
 #func _on_coin_choice_selected(choice) -> void:
 #	deck_component.deck_coins.append(choice)
+
+
+func _on_health_component_die() -> void:
+	player_died.emit()

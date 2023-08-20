@@ -35,7 +35,6 @@ func play_turn() -> void:
 	
 	# Select random action
 	var rnd_act: float = total_weight * Global.rng.randf()
-	print("rnd act: ", rnd_act)
 	var act_idx: int   = 0
 	var curr_weight: float = 0.0
 	for w in weights:

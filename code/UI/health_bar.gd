@@ -11,7 +11,7 @@ extends TextureProgressBar
 		
 		target = target_entity.get_node("HealthComponent")
 		if target:
-			set_health(100.0 * target.starting_health / target.max_health)
+			set_health(100.0 * target.current_health / target.max_health)
 			target.health_changed.connect(func(_v):
 				change_health(100.0 * target.current_health / target.max_health)
 			)
@@ -24,16 +24,6 @@ extends TextureProgressBar
 
 var tween: Tween
 var target: HealthComponent
-
-
-func _ready() -> void:
-	value_changed.connect(func(v):
-		tint_progress = gradient.sample(v * 0.01)
-		tint_progress.a = 100.0 / 255.0
-	)
-	$CurrentHealth.value_changed.connect(func(v):
-		$CurrentHealth.tint_progress = gradient.sample(v * 0.01)
-	)
 
 
 ## Animate the health change
@@ -58,3 +48,12 @@ func set_health(proportion: float) -> void:
 	
 	value = proportion
 	$CurrentHealth.value = proportion
+
+
+func _on_value_changed(value: float) -> void:
+	tint_progress = gradient.sample(value * 0.01)
+	tint_progress.a = 100.0 / 255.0
+
+
+func _on_current_health_value_changed(value: float) -> void:
+	$CurrentHealth.tint_progress = gradient.sample(value * 0.01)

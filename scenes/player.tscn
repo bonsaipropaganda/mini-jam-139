@@ -23,4 +23,5 @@ texture = ExtResource("2_bu68y")
 coins = Array[Resource("res://code/coin.gd")]([ExtResource("5_r0pke"), ExtResource("5_r0pke"), ExtResource("5_r0pke"), ExtResource("5_r0pke"), ExtResource("5_r0pke"), ExtResource("5_r0pke"), ExtResource("6_hi8ib"), ExtResource("6_hi8ib"), ExtResource("6_hi8ib"), ExtResource("7_r8ms5")])
 deck_owner = NodePath("..")
 
+[connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
 [connection signal="dealt" from="DeckComponent" to="." method="_on_deck_component_dealt"]

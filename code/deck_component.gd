@@ -32,6 +32,11 @@ func _ready() -> void:
 		do_action.connect(func(act): parent.do_action.emit(act))
 
 
+func _enter_tree() -> void:
+	await get_tree().process_frame
+	deal()
+
+
 func _process(delta: float) -> void:
 	if current_hand.is_empty():
 		deal()

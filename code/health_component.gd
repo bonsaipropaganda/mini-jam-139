@@ -23,12 +23,10 @@ var current_health:
 		health_changed.emit(current_health)
 		# signal emitted after setting current_health
 		if took_dmg:
-			print(current_health)
 			take_damage.emit()
 		# emits a signal if entity runs out of health
 		if current_health <= 0:
 			die.emit()
-			print(get_parent().name + " dead")
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,8 +1,32 @@
 extends Node2D
 
-func _ready() -> void:
-	for child in $Enemies.get_children():
-		child.enemy_died.connect(_on_enemy_died)
 
-func _on_enemy_died():
-	$CanvasLayer/UI/ChoiceSceneCoin.show()
+@export var first_encounter: Encounter
+
+
+var encounter_node: Node
+var player: Node
+
+
+func _ready() -> void:
+	player = preload("res://scenes/player.tscn").instantiate()
+	use_encounter(first_encounter)
+
+
+func use_encounter(enc: Encounter) -> void:
+	if encounter_node:
+		if player.is_inside_tree():
+			player.get_parent().remove_child(player)
+		encounter_node.queue_free()
+	
+	encounter_node = enc.create_and_setup_scene()
+	add_child(encounter_node)
+	if encounter_node.has_method(&"set_player"):
+		encounter_node.set_player(player)
+	encounter_node.encounter_ended.connect(func():
+		%Map.show_map()
+	)
+
+
+func _on_map_encounter_chosen(enc: Encounter) -> void:
+	use_encounter(enc)
