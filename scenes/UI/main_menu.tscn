@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwcia5fh30qwp"]
+[gd_scene load_steps=19 format=3 uid="uid://dwcia5fh30qwp"]
 
 [ext_resource type="Script" path="res://code/main_menu.gd" id="1_fsifx"]
 [ext_resource type="Texture2D" uid="uid://cr3bhl0q88bg3" path="res://art/StartButton/normal_0001.png" id="2_5vlr4"]
@@ -47,6 +47,16 @@ frame_2/duration = 0.5
 frame_3/texture = ExtResource("9_gh68b")
 frame_3/duration = 0.5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8eo0r"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2qx0q"]
+bg_color = Color(0.776471, 0.776471, 0.776471, 1)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
 [node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -72,4 +82,21 @@ texture_normal = SubResource("AnimatedTexture_k6fqc")
 texture_pressed = SubResource("AnimatedTexture_6ohsc")
 texture_hover = SubResource("AnimatedTexture_isr3w")
 
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Volume:"
+
+[node name="VolumeSlider" type="HSlider" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_8eo0r")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_2qx0q")
+max_value = 1.2
+step = 0.1
+value = 1.0
+
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/HBoxContainer/VolumeSlider" to="." method="_on_volume_slider_value_changed"]

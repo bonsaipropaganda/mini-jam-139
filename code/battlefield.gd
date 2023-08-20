@@ -50,7 +50,8 @@ func set_enemy(enemy_scene: PackedScene) -> void:
 		%ChoiceSceneCoin.hide()
 		encounter_ended.emit()
 	)
-	end_player_turn.connect(enemy.play_turn)
+	end_player_turn.connect(enemy._turn_start)
+	start_player_turn.connect(enemy._turn_end)
 	$EnemyLocation.add_child(enemy)
 	
 	%EnemyHealthBar.target_entity = enemy
@@ -58,6 +59,8 @@ func set_enemy(enemy_scene: PackedScene) -> void:
 
 func set_player(p: Node2D) -> void:
 	player = p
+	start_player_turn.connect(player._turn_start)
+	end_player_turn.connect(player._turn_end)
 	player.do_action.connect(_play_action)
 	$PlayerLocation.add_child(player)
 	player.coins_hbox = $UI/UI/CoinsHBox # Oof this piece of code hurts, but this is a jam lol

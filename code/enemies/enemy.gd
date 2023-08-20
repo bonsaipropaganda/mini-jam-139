@@ -16,10 +16,7 @@ signal enemy_died
 @onready var health_component = $HealthComponent
 
 
-func play_turn() -> void:
-	# Wait to make the combat history more legible
-	await get_tree().create_timer(0.5).timeout
-	
+func _play_turn() -> void:
 	# Make sure actions are setup properly
 	if possible_actions.size() == 0:
 		do_action.emit(NullAction.new())
@@ -46,6 +43,39 @@ func play_turn() -> void:
 	do_action.emit(possible_actions[act_idx])
 
 
+func add_status_effect(effect: StatusEffect) -> void:
+	add_child(effect)
+	effect.position = Vector2(Global.rng.randf_range(-100, 100), Global.rng.randf_range(-100, 100))
+
+
+func _turn_start() -> void:
+	# Apply to all status effects
+	for c in get_children():
+		if c is StatusEffect:
+			c.turn_start()
+	
+	# Wait to make the combat history more legible
+	await get_tree().create_timer(0.5).timeout
+	_play_turn()
+
+
+func _turn_end() -> void:
+	# Apply to all status effects
+	for c in get_children():
+		if c is StatusEffect:
+			c.turn_end()
+
+
+# Note: player and enemy should really inherit from the same class
+func _play_action(act: Action) -> void:
+	# Apply to all status effects
+	for c in get_children():
+		if c is StatusEffect:
+			c.action_to_apply(act)
+	# Send action to be done
+	do_action.emit(act)
+
+
 func _on_health_component_die() -> void:
 	enemy_died.emit()
 	queue_free()
@@ -54,12 +84,3 @@ func _on_health_component_die() -> void:
 func _on_health_component_take_damage() -> void:
 	$EntityAnimator.play("hurt")
 	SfxManager.enemy_hurt.play()
-
-
-
-
-
-
-
-
-
