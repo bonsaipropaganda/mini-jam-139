@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Coin" load_steps=5 format=3 uid="uid://hqck15aquvvj"]
+
+[ext_resource type="Script" path="res://code/combat/actions/StrongAction.gd" id="1_qwinw"]
+[ext_resource type="Script" path="res://code/coin.gd" id="2_fv336"]
+
+[sub_resource type="Resource" id="Resource_2lsod"]
+script = ExtResource("1_qwinw")
+amount = 5
+
+[sub_resource type="Resource" id="Resource_b6nsa"]
+script = ExtResource("1_qwinw")
+amount = 5
+
+[resource]
+script = ExtResource("2_fv336")
+coin_name = "StrongAttack"
+description = ""
+head_weight = 0.5
+head_action = SubResource("Resource_2lsod")
+tail_action = SubResource("Resource_b6nsa")
