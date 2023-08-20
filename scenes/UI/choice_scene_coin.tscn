@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://x32nf6rqxaa5"]
+[gd_scene load_steps=7 format=3 uid="uid://x32nf6rqxaa5"]
 
 [ext_resource type="Script" path="res://code/UI/choice_scene_coin.gd" id="1_ipoeb"]
 [ext_resource type="Resource" uid="uid://dn6a7rjh1wo52" path="res://code/resources/coins/basic_attack.tres" id="2_leuck"]
 [ext_resource type="Resource" uid="uid://dlnjy5dwd3a7j" path="res://code/resources/coins/basic_heal.tres" id="3_cf7iv"]
 [ext_resource type="Resource" uid="uid://cwtxmqjixt7v" path="res://code/resources/coins/risky_attack.tres" id="4_1nfus"]
 [ext_resource type="Resource" uid="uid://hqck15aquvvj" path="res://code/resources/coins/strong_attack.tres" id="5_jfrsj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_o3lwo"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="ChoiceSceneCoin" type="Control"]
 layout_mode = 3
@@ -24,6 +27,7 @@ offset_bottom = 40.0
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 text = "What coin would you like to add to your deck?"
+label_settings = SubResource("LabelSettings_o3lwo")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
