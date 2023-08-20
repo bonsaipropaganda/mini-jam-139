@@ -1,6 +1,51 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwcia5fh30qwp"]
+[gd_scene load_steps=17 format=3 uid="uid://dwcia5fh30qwp"]
 
 [ext_resource type="Script" path="res://code/main_menu.gd" id="1_fsifx"]
+[ext_resource type="Texture2D" uid="uid://cr3bhl0q88bg3" path="res://art/StartButton/normal_0001.png" id="2_5vlr4"]
+[ext_resource type="Texture2D" uid="uid://c686rimbdpdbo" path="res://art/StartButton/normal_0002.png" id="3_jqeed"]
+[ext_resource type="Texture2D" uid="uid://dnphg8ovxpacq" path="res://art/StartButton/normal_0003.png" id="4_pt2ln"]
+[ext_resource type="Texture2D" uid="uid://dw85d4tb8byhf" path="res://art/StartButton/normal_0004.png" id="5_crouq"]
+[ext_resource type="Texture2D" uid="uid://t4ej66dmcoko" path="res://art/StartButton/hover_0001.png" id="6_8xah8"]
+[ext_resource type="Texture2D" uid="uid://c2b4nd7gxvwq7" path="res://art/StartButton/pressed_0001.png" id="6_nhk67"]
+[ext_resource type="Texture2D" uid="uid://bdg0hgf1l1aqs" path="res://art/StartButton/hover_0002.png" id="7_cmayv"]
+[ext_resource type="Texture2D" uid="uid://0m3vf1d045ar" path="res://art/StartButton/pressed_0002.png" id="7_m0vn7"]
+[ext_resource type="Texture2D" uid="uid://dqln07xb053su" path="res://art/StartButton/pressed_0003.png" id="8_kvhwv"]
+[ext_resource type="Texture2D" uid="uid://dk2m570a67kdh" path="res://art/StartButton/hover_0003.png" id="8_osevb"]
+[ext_resource type="Texture2D" uid="uid://bpou84kbwxkne" path="res://art/StartButton/pressed_0004.png" id="9_gal6f"]
+[ext_resource type="Texture2D" uid="uid://bxnvdgsjn6ho0" path="res://art/StartButton/hover_0004.png" id="9_gh68b"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_k6fqc"]
+frames = 4
+frame_0/texture = ExtResource("2_5vlr4")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("3_jqeed")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("4_pt2ln")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("5_crouq")
+frame_3/duration = 0.5
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_6ohsc"]
+frames = 4
+frame_0/texture = ExtResource("6_nhk67")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("7_m0vn7")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("8_kvhwv")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("9_gal6f")
+frame_3/duration = 0.5
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_isr3w"]
+frames = 4
+frame_0/texture = ExtResource("6_8xah8")
+frame_0/duration = 0.5
+frame_1/texture = ExtResource("7_cmayv")
+frame_1/duration = 0.5
+frame_2/texture = ExtResource("8_osevb")
+frame_2/duration = 0.5
+frame_3/texture = ExtResource("9_gh68b")
+frame_3/duration = 0.5
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -21,9 +66,10 @@ alignment = 1
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
 
-[node name="StartButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+[node name="StartButton" type="TextureButton" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Start
-"
+texture_normal = SubResource("AnimatedTexture_k6fqc")
+texture_pressed = SubResource("AnimatedTexture_6ohsc")
+texture_hover = SubResource("AnimatedTexture_isr3w")
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
