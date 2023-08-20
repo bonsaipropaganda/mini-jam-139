@@ -13,11 +13,16 @@ config_version=5
 config/name="Mini-jam-139"
 run/main_scene="res://scenes/UI/main_menu.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
+boot_splash/bg_color=Color(0.584314, 0.584314, 0.584314, 1)
+boot_splash/image="res://art/deck of coins menu.png"
 config/icon="res://art/icon.svg"
+boot_splash/minimum_display_time=2000
 
 [autoload]
 
 Global="*res://code/global.gd"
+MusicManager="*res://scenes/music_manager.tscn"
+SfxManager="*res://scenes/sfx_manager.tscn"
 
 [display]
 
@@ -29,3 +34,4 @@ window/stretch/mode="canvas_items"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.584314, 0.584314, 0.584314, 1)

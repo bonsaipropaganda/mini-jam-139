@@ -1,17 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkvc4mkxdhceq"]
+[gd_scene load_steps=6 format=3 uid="uid://iejmmnbiii2j"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_u4f47"]
+[ext_resource type="PackedScene" uid="uid://cqmtn0q37ttcv" path="res://scenes/enemies/Willo.tscn" id="2_djhtq"]
 [ext_resource type="PackedScene" uid="uid://8joir45it7pu" path="res://scenes/UI/map/map.tscn" id="2_ehh34"]
-[ext_resource type="Script" path="res://code/UI/map/combat_encounter.gd" id="3_0heag"]
-[ext_resource type="PackedScene" uid="uid://cqmtn0q37ttcv" path="res://scenes/enemies/Willo.tscn" id="6_wtn3q"]
+[ext_resource type="Script" path="res://code/UI/map/combat_encounter.gd" id="3_ws0bv"]
 
-[sub_resource type="Resource" id="Resource_rfqiq"]
-script = ExtResource("3_0heag")
-possible_enemies = Array[PackedScene]([ExtResource("6_wtn3q")])
+[sub_resource type="Resource" id="Resource_nwwg6"]
+script = ExtResource("3_ws0bv")
+possible_enemies = Array[PackedScene]([ExtResource("2_djhtq")])
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_u4f47")
-first_encounter = SubResource("Resource_rfqiq")
+first_encounter = SubResource("Resource_nwwg6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2

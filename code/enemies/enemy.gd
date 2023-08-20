@@ -49,3 +49,8 @@ func play_turn() -> void:
 func _on_health_component_die() -> void:
 	enemy_died.emit()
 	queue_free()
+
+
+func _on_health_component_take_damage() -> void:
+	$EntityAnimator.play("hurt")
+	SfxManager.enemy_hurt.play()

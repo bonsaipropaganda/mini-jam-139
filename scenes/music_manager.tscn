@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://jp46oj3hxncf"]
+
+[ext_resource type="Script" path="res://code/music_manager.gd" id="1_o8x3i"]
+[ext_resource type="AudioStream" uid="uid://b2kal5i7yhfy1" path="res://sound/whatx27s-in-the-biscuit-tin-154535.mp3" id="2_2y7kv"]
+[ext_resource type="AudioStream" uid="uid://bkvrv42261hd8" path="res://sound/quirky_music.mp3" id="3_s0m21"]
+
+[node name="MusicManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_o8x3i")
+
+[node name="Menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2y7kv")
+
+[node name="MainTheme2" type="AudioStreamPlayer" parent="."]
+
+[node name="MainTheme1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_s0m21")
+
+[connection signal="finished" from="Menu" to="." method="_on_menu_finished"]
+[connection signal="finished" from="MainTheme2" to="." method="_on_main_theme_2_finished"]
+[connection signal="finished" from="MainTheme1" to="." method="_on_main_theme_1_finished"]

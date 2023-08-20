@@ -1,5 +1,13 @@
 extends TextureProgressBar
 
+func _ready() -> void:
+	# shows a decorative sprite whether it's the player or not
+	if target_entity:
+		$YourHealth.hide()
+		$EnemyIndicator.show()
+	else:
+		$YourHealth.show()
+		$EnemyIndicator.hide()
 
 @export var target_entity: Node:
 	set(value):

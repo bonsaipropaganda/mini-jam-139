@@ -43,3 +43,8 @@ func update_deck_ui():
 
 func _on_health_component_die() -> void:
 	player_died.emit()
+
+
+func _on_health_component_take_damage() -> void:
+	$EntityAnimator.play("hurt")
+	SfxManager.player_hurt.play()
