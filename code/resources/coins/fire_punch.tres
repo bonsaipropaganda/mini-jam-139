@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="Coin" load_steps=9 format=3 uid="uid://y50r5hl6yhsd"]
+
+[ext_resource type="Script" path="res://code/coin.gd" id="1_0xt11"]
+[ext_resource type="Script" path="res://code/combat/actions/deal_damage.gd" id="1_2stgx"]
+[ext_resource type="Script" path="res://code/combat/actions/burn.gd" id="2_706sp"]
+[ext_resource type="Script" path="res://code/combat/actions/multi_action.gd" id="3_muc4a"]
+
+[sub_resource type="Resource" id="Resource_bewvj"]
+script = ExtResource("1_2stgx")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_ln4h7"]
+script = ExtResource("2_706sp")
+damage = 1
+duration = 4
+
+[sub_resource type="Resource" id="Resource_0k820"]
+script = ExtResource("3_muc4a")
+actions = Array[Resource("res://code/combat/actions/action.gd")]([SubResource("Resource_bewvj"), SubResource("Resource_ln4h7")])
+
+[sub_resource type="Resource" id="Resource_8prcm"]
+script = ExtResource("1_2stgx")
+amount = 2
+
+[resource]
+script = ExtResource("1_0xt11")
+coin_name = "Fire Punch"
+description = ""
+head_weight = 0.6
+head_action = SubResource("Resource_0k820")
+tail_action = SubResource("Resource_8prcm")

@@ -7,7 +7,7 @@
 [ext_resource type="Resource" uid="uid://dn6a7rjh1wo52" path="res://code/resources/coins/basic_attack.tres" id="5_r0pke"]
 [ext_resource type="Resource" uid="uid://cwtxmqjixt7v" path="res://code/resources/coins/risky_attack.tres" id="6_hi8ib"]
 [ext_resource type="Resource" uid="uid://dlnjy5dwd3a7j" path="res://code/resources/coins/basic_heal.tres" id="7_r8ms5"]
-[ext_resource type="PackedScene" uid="uid://i3fwwekparef" path="res://scenes/entity_animator.tscn" id="8_xhtn5"]
+[ext_resource type="PackedScene" path="res://scenes/entity_animator.tscn" id="8_xhtn5"]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_u7p6k")
