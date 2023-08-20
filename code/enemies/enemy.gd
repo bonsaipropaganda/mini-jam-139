@@ -6,6 +6,7 @@ const NullAction := preload("res://code/combat/actions/action.gd")
 
 
 signal do_action(action: Action)
+signal enemy_died
 
 
 @export var possible_actions: Array[Action] = []
@@ -44,3 +45,8 @@ func play_turn() -> void:
 		act_idx += 1
 	
 	do_action.emit(possible_actions[act_idx])
+
+
+func _on_health_component_die() -> void:
+	enemy_died.emit()
+	queue_free()
