@@ -25,6 +25,10 @@ func play_coin(idx: int) -> void:
 	update_deck_ui()
 
 
+func add_coin(coin: Coin) -> void:
+	deck_component.add_coin(coin)
+
+
 func _on_deck_component_dealt(signal_hand) -> void:
 	current_hand = signal_hand
 	if coins_hbox:

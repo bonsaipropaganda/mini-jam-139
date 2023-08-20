@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://x32nf6rqxaa5"]
+[gd_scene load_steps=6 format=3 uid="uid://x32nf6rqxaa5"]
 
 [ext_resource type="Script" path="res://code/UI/choice_scene_coin.gd" id="1_ipoeb"]
+[ext_resource type="Resource" uid="uid://dn6a7rjh1wo52" path="res://code/resources/coins/basic_attack.tres" id="2_leuck"]
+[ext_resource type="Resource" uid="uid://dlnjy5dwd3a7j" path="res://code/resources/coins/basic_heal.tres" id="3_cf7iv"]
+[ext_resource type="Resource" uid="uid://cwtxmqjixt7v" path="res://code/resources/coins/risky_attack.tres" id="4_1nfus"]
+[ext_resource type="Resource" uid="uid://hqck15aquvvj" path="res://code/resources/coins/strong_attack.tres" id="5_jfrsj"]
 
 [node name="ChoiceSceneCoin" type="Control"]
 layout_mode = 3
@@ -10,6 +14,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ipoeb")
+possible_coins = Array[Resource("res://code/coin.gd")]([ExtResource("2_leuck"), ExtResource("3_cf7iv"), ExtResource("4_1nfus"), ExtResource("5_jfrsj")])
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0

@@ -1,15 +1,15 @@
 extends Control
 
-signal choice_selected(choice)
 
-var basic_attack_coin = "res://code/resources/coins/basic_attack.tres"
-var basic_heal_coin = "res://code/resources/coins/basic_heal.tres"
-var risky_attack_coin = "res://code/resources/coins/risky_attack.tres"
+signal coin_selected(choice: Coin)
 
-var possible_coins = [basic_attack_coin, basic_heal_coin, risky_attack_coin]
 
-var choice_1
-var choice_2
+@export var possible_coins: Array[Coin] = []
+
+
+var choice_1: Coin
+var choice_2: Coin
+
 
 func _ready() -> void:
 	# pick a random one for each and make sure it's not the same coin
@@ -19,13 +19,13 @@ func _ready() -> void:
 		choice_2 = possible_coins.pick_random()
 	
 	# setup the UI
-	$VBoxContainer/HBoxContainer/Choice1Button.text = choice_1
-	$VBoxContainer/HBoxContainer/Choice2Button.text = choice_2
-
+	$VBoxContainer/HBoxContainer/Choice1Button.text = choice_1.coin_name
+	$VBoxContainer/HBoxContainer/Choice2Button.text = choice_2.coin_name
 
 
 func _on_choice_1_button_pressed() -> void:
-	choice_selected.emit(choice_1)
+	coin_selected.emit(choice_1)
+
 
 func _on_choice_2_button_pressed() -> void:
-	choice_selected.emit(choice_2)
+	coin_selected.emit(choice_2)

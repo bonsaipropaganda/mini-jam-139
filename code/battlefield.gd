@@ -44,7 +44,12 @@ func set_enemy(enemy_scene: PackedScene) -> void:
 	
 	if enemy: enemy.queue_free()
 	enemy = new_enemy
-	enemy.enemy_died.connect(func(): encounter_ended.emit())
+	enemy.enemy_died.connect(func():
+		%ChoiceSceneCoin.show()
+		await %ChoiceSceneCoin.coin_selected
+		%ChoiceSceneCoin.hide()
+		encounter_ended.emit()
+	)
 	end_player_turn.connect(enemy.play_turn)
 	$EnemyLocation.add_child(enemy)
 	
@@ -62,3 +67,7 @@ func set_player(p: Node2D) -> void:
 	%Coin1Button.pressed.connect(player.play_coin.bind(0))
 	%Coin2Button.pressed.connect(player.play_coin.bind(1))
 	%Coin3Button.pressed.connect(player.play_coin.bind(2))
+
+
+func player_add_coin(coin: Coin) -> void:
+	player.add_coin(coin)

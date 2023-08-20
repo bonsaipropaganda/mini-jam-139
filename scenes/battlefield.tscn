@@ -17,7 +17,39 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="PlayerHealthBar" parent="UI/UI" instance=ExtResource("4_51fdp")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 64.0
+offset_top = 331.0
+offset_right = 320.0
+offset_bottom = 395.0
+
+[node name="EnemyHealthBar" parent="UI/UI" instance=ExtResource("4_51fdp")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 1218.0
+offset_top = 550.0
+offset_right = 1474.0
+offset_bottom = 614.0
+scale = Vector2(-1, 1)
+
+[node name="CurrentCoins" type="Label" parent="UI/UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Current coins:"
+
+[node name="CombatHistory" parent="UI/UI" instance=ExtResource("5_tf41l")]
+layout_mode = 1
+offset_left = 320.0
+offset_right = 920.0
+offset_bottom = 140.0
+message_spacing = null
+history_length = null
+
 [node name="ChoiceSceneCoin" parent="UI/UI" instance=ExtResource("2_nbfrv")]
+unique_name_in_owner = true
 visible = false
 layout_mode = 1
 offset_left = 288.0
@@ -60,39 +92,10 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Discard pile:"
 
-[node name="PlayerHealthBar" parent="UI/UI" instance=ExtResource("4_51fdp")]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = 64.0
-offset_top = 331.0
-offset_right = 320.0
-offset_bottom = 395.0
-
-[node name="EnemyHealthBar" parent="UI/UI" instance=ExtResource("4_51fdp")]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = 1218.0
-offset_top = 550.0
-offset_right = 1474.0
-offset_bottom = 614.0
-scale = Vector2(-1, 1)
-
-[node name="CurrentCoins" type="Label" parent="UI/UI"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Current coins:"
-
-[node name="CombatHistory" parent="UI/UI" instance=ExtResource("5_tf41l")]
-layout_mode = 1
-offset_left = 320.0
-offset_right = 920.0
-offset_bottom = 140.0
-message_spacing = null
-history_length = null
-
 [node name="PlayerLocation" type="Node2D" parent="."]
 position = Vector2(184, 526)
 
 [node name="EnemyLocation" type="Node2D" parent="."]
 position = Vector2(978, 498)
+
+[connection signal="coin_selected" from="UI/UI/ChoiceSceneCoin" to="." method="player_add_coin"]

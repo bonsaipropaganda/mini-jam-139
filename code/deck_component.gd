@@ -80,3 +80,7 @@ func shuffle_discard_in():
 	deck_coins.append_array(discard_pile)
 	discard_pile = []
 	shuffle()
+
+
+func add_coin(coin: Coin) -> void:
+	deck_coins.push_back(coin)

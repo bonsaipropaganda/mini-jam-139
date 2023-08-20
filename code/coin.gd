@@ -6,7 +6,7 @@ const NullAction := preload("res://code/combat/actions/action.gd")
 
 
 @export var coin_name: String = ""
-@export var description: String = ""
+@export_multiline var description: String = ""
 @export var head_image: Texture # TODO implement
 @export var tail_image: Texture
 
