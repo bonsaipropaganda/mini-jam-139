@@ -14,11 +14,11 @@ var player_hand = []:
 
 func set_button_labels():
 	if player_hand[0]:
-		coin_1_button.text = player_hand[0].coin_name
+		coin_1_button.set_coin(player_hand[0])
 	if player_hand[1]:
-		coin_2_button.text = player_hand[1].coin_name
+		coin_2_button.set_coin(player_hand[1])
 	if player_hand[2]:
-		coin_3_button.text = player_hand[2].coin_name
+		coin_3_button.set_coin(player_hand[2])
 
 
 func _process(delta: float) -> void:
