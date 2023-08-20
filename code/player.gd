@@ -36,5 +36,5 @@ func update_deck_ui():
 	Global.player_discard_size = len(deck_component.discard_pile)
 
 
-func _on_coin_choice_selected(choice) -> void:
-	deck_component.deck_coins.append(choice)
+#func _on_coin_choice_selected(choice) -> void:
+#	deck_component.deck_coins.append(choice)
