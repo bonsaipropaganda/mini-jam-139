@@ -63,8 +63,6 @@ func play(coin):
 	if current_hand:
 		do_action.emit(current_hand[coin].flip())
 	else: print("empty hand")
-#	print("current_hand: " + str(current_hand))
-#	print("deck_coins:" + str(deck_coins))
 
 
 func finish_hand():

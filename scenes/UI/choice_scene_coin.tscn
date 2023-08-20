@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://x32nf6rqxaa5"]
+
+[ext_resource type="Script" path="res://code/UI/choice_scene_coin.gd" id="1_ipoeb"]
+
+[node name="ChoiceSceneCoin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ipoeb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "What coin would you like to add to your deck?"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Choice1Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Example 1"
+
+[node name="Choice2Button" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Example 2"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Choice1Button" to="." method="_on_choice_1_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Choice2Button" to="." method="_on_choice_2_button_pressed"]

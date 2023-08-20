@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://iejmmnbiii2j"]
+[gd_scene load_steps=9 format=3 uid="uid://iejmmnbiii2j"]
 
 [ext_resource type="PackedScene" uid="uid://b02po41vs2fo2" path="res://scenes/player.tscn" id="1_rlfoc"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_u4f47"]
 [ext_resource type="Script" path="res://code/combat/combat_manager.gd" id="2_0uygc"]
 [ext_resource type="PackedScene" uid="uid://pdhajmhtyjha" path="res://scenes/UI/combat_history.tscn" id="2_5qwly"]
 [ext_resource type="Script" path="res://code/UI/coins_hbox.gd" id="2_6e1k6"]
 [ext_resource type="PackedScene" uid="uid://bh7g0ayrjj5c2" path="res://scenes/UI/health_bar.tscn" id="3_u6i8t"]
+[ext_resource type="PackedScene" uid="uid://x32nf6rqxaa5" path="res://scenes/UI/choice_scene_coin.tscn" id="5_gvm72"]
 [ext_resource type="PackedScene" uid="uid://cqmtn0q37ttcv" path="res://scenes/enemies/Willo.tscn" id="6_wtn3q"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_u4f47")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -17,13 +20,26 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="ChoiceSceneCoin" parent="CanvasLayer/UI" instance=ExtResource("5_gvm72")]
+visible = false
+layout_mode = 1
+offset_left = 288.0
+offset_top = 182.0
+offset_right = 288.0
+offset_bottom = 182.0
+
 [node name="CoinsHBox" type="HBoxContainer" parent="CanvasLayer/UI"]
 layout_mode = 0
-offset_left = 146.0
-offset_top = 632.0
-offset_right = 186.0
-offset_bottom = 672.0
+offset_left = 9.0
+offset_top = 607.0
+offset_right = 399.0
+offset_bottom = 647.0
 script = ExtResource("2_6e1k6")
+
+[node name="DeckLabel" type="Label" parent="CanvasLayer/UI/CoinsHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Coins in deck: "
 
 [node name="Coin1Button" type="Button" parent="CanvasLayer/UI/CoinsHBox"]
 layout_mode = 2
@@ -39,11 +55,10 @@ text = "Coin 2
 layout_mode = 2
 text = "Coin 3"
 
-[node name="CombatHistory" parent="CanvasLayer/UI" instance=ExtResource("2_5qwly")]
-layout_mode = 1
-offset_left = 338.0
-offset_right = 844.0
-offset_bottom = 133.0
+[node name="DiscardLabel" type="Label" parent="CanvasLayer/UI/CoinsHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Discard pile:"
 
 [node name="PlayerHealthBar" parent="CanvasLayer/UI" node_paths=PackedStringArray("target_entity") instance=ExtResource("3_u6i8t")]
 layout_mode = 1
@@ -60,20 +75,36 @@ offset_top = 550.0
 offset_right = 1474.0
 offset_bottom = 614.0
 scale = Vector2(-1, 1)
-target_entity = NodePath("../../../Willow")
+target_entity = NodePath("../../../Enemies/Willow")
+
+[node name="CurrentCoins" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Current coins:"
 
 [node name="CombatManager" type="Node" parent="." node_paths=PackedStringArray("player", "enemy")]
 script = ExtResource("2_0uygc")
 player = NodePath("../Player")
-enemy = NodePath("../Willow")
+enemy = NodePath("../Enemies/Willow")
+
+[node name="CombatHistory" parent="." instance=ExtResource("2_5qwly")]
+offset_left = 381.0
+offset_top = 158.0
+offset_right = 381.0
+offset_bottom = 158.0
+message_spacing = null
+history_length = null
 
 [node name="Player" parent="." instance=ExtResource("1_rlfoc")]
 position = Vector2(184, 526)
 
-[node name="Willow" parent="." instance=ExtResource("6_wtn3q")]
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Willow" parent="Enemies" instance=ExtResource("6_wtn3q")]
 position = Vector2(978, 498)
 
 [connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin1Button" to="Player" method="play_coin" binds= [0]]
 [connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin2Button" to="Player" method="play_coin" binds= [1]]
 [connection signal="pressed" from="CanvasLayer/UI/CoinsHBox/Coin3Button" to="Player" method="play_coin" binds= [2]]
-[connection signal="end_player_turn" from="CombatManager" to="Willow" method="play_turn"]
+[connection signal="end_player_turn" from="CombatManager" to="Enemies/Willow" method="play_turn"]

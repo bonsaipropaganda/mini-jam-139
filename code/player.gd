@@ -21,13 +21,20 @@ var current_hand = []
 func play_coin(idx: int) -> void:
 	deck_component.play(idx)
 	deck_component.finish_hand()
+	update_deck_ui()
 
 
 func _on_deck_component_dealt(signal_hand) -> void:
 	current_hand = signal_hand
 	if coins_hbox:
 		coins_hbox.player_hand = signal_hand
+	update_deck_ui()
 
 
-func _on_deal_button_pressed() -> void:
-	deck_component.deal()
+func update_deck_ui():
+	Global.player_deck_size = len(deck_component.deck_coins)
+	Global.player_discard_size = len(deck_component.discard_pile)
+
+
+#func _on_coin_choice_selected(choice) -> void:
+#	deck_component.deck_coins.append(choice)

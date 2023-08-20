@@ -23,3 +23,5 @@ weights = Array[float]([2.0, 0.5])
 [node name="HealthComponent" parent="." instance=ExtResource("2_u8w1j")]
 starting_health = 10
 max_health = 10
+
+[connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
