@@ -55,6 +55,10 @@ func update_deck_ui():
 	Global.player_discard_size = len(deck_component.discard_pile)
 
 
+#func _on_coin_choice_selected(choice) -> void:
+#	deck_component.deck_coins.append(choice)
+
+
 func _on_health_component_die() -> void:
 	player_died.emit()
 
@@ -76,3 +80,5 @@ func _turn_end() -> void:
 	for c in get_children():
 		if c is StatusEffect:
 			c.turn_end()
+func _on_player_died():
+	get_tree().change_scene_to_file("res://scenes/gameover.tscn")
