@@ -82,3 +82,8 @@ func _turn_end() -> void:
 			c.turn_end()
 func _on_player_died():
 	get_tree().change_scene_to_file("res://scenes/gameover.tscn")
+
+
+
+func _on_health_component_gained_health() -> void:
+	SfxManager.player_heal.play()

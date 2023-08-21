@@ -25,7 +25,8 @@ amount = 2
 [resource]
 script = ExtResource("1_0xt11")
 coin_name = "Fire Punch"
-description = ""
-head_weight = 0.6
+description = "Heads: inflicts burn and 2 damage
+Tails: 2 damage"
+head_weight = 0.5
 head_action = SubResource("Resource_0k820")
 tail_action = SubResource("Resource_8prcm")

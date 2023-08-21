@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://crsmk41hhfm84"]
+[gd_scene load_steps=5 format=3 uid="uid://crsmk41hhfm84"]
 
 [ext_resource type="Script" path="res://code/sfx_manager.gd" id="1_ljfx2"]
 [ext_resource type="AudioStream" uid="uid://cl2gwvm1781kd" path="res://sound/sfx/player_hurt.wav" id="2_qresh"]
 [ext_resource type="AudioStream" uid="uid://bu5knqn10iuuw" path="res://sound/sfx/enemy_hurt.wav" id="3_1xqvi"]
+[ext_resource type="AudioStream" uid="uid://bsf01271dft3y" path="res://sound/sfx/heal.mp3" id="3_q2mml"]
 
 [node name="SFXManager" type="Node2D"]
 process_mode = 3
@@ -10,6 +11,9 @@ script = ExtResource("1_ljfx2")
 
 [node name="player_hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_qresh")
+
+[node name="player_heal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q2mml")
 
 [node name="enemy_hurt" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1xqvi")

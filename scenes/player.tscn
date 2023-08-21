@@ -30,5 +30,7 @@ deck_owner = NodePath("..")
 
 [connection signal="player_died" from="." to="." method="_on_player_died"]
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
+[connection signal="gained_health" from="HealthComponent" to="." method="_on_health_component_gained_health"]
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
 [connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]
 [connection signal="dealt" from="DeckComponent" to="." method="_on_deck_component_dealt"]

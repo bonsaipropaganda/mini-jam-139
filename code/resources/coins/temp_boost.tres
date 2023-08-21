@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Coin" load_steps=9 format=3 uid="uid://ctc8jt6a0foku"]
+[gd_resource type="Resource" script_class="Coin" load_steps=9 format=3 uid="uid://clrvj80xfjw5p"]
 
 [ext_resource type="Script" path="res://code/coin.gd" id="1_16u5c"]
 [ext_resource type="Script" path="res://code/combat/actions/deal_damage.gd" id="1_xvpdb"]
@@ -27,6 +27,6 @@ duration = 3
 script = ExtResource("1_16u5c")
 coin_name = "Temp boost"
 description = ""
-head_weight = 0.2
+head_weight = 0.5
 head_action = SubResource("Resource_lbcuc")
 tail_action = SubResource("Resource_uwjoc")

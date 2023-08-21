@@ -7,6 +7,7 @@ extends Node
 signal die
 signal take_damage
 signal health_changed(value: float)
+signal gained_health
 
 @export var starting_health: int = 20
 @export var max_health: int = 20
@@ -14,16 +15,21 @@ signal health_changed(value: float)
 var current_health:
 	set(new_value):
 		var took_dmg = false
+		var healed = false
 		# if new value is less than the current health take damage signal
 		if current_health:
 			if new_value < current_health:
 				took_dmg = true
+			elif new_value > current_health:
+				healed = true
 		# sets the value like normal
 		current_health = min(new_value, max_health)
 		health_changed.emit(current_health)
 		# signal emitted after setting current_health
 		if took_dmg:
 			take_damage.emit()
+		if healed == true:
+			gained_health.emit()
 		# emits a signal if entity runs out of health
 		if current_health <= 0:
 			die.emit()

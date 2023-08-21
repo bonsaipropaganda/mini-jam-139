@@ -5,16 +5,17 @@
 
 [sub_resource type="Resource" id="Resource_jp3dq"]
 script = ExtResource("1_nipwl")
-amount = 3
+amount = 4
 
 [sub_resource type="Resource" id="Resource_88vvy"]
 script = ExtResource("1_nipwl")
-amount = 1
+amount = 2
 
 [resource]
 script = ExtResource("1_waa5w")
 coin_name = "Basic Attack"
-description = ""
+description = "Heads: 4 damage
+Tails: 2 damage"
 head_weight = 0.5
 head_action = SubResource("Resource_jp3dq")
 tail_action = SubResource("Resource_88vvy")

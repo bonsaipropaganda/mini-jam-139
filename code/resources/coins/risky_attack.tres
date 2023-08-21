@@ -15,7 +15,8 @@ amount = 2
 [resource]
 script = ExtResource("1_xprp4")
 coin_name = "Risky Attack"
-description = ""
-head_weight = 0.35
+description = "Heads: 10 damage
+Tails: 2 self damage"
+head_weight = 0.5
 head_action = SubResource("Resource_jxwrs")
 tail_action = SubResource("Resource_0hxsj")
