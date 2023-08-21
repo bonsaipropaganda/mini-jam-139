@@ -74,3 +74,7 @@ func set_player(p: Node2D) -> void:
 
 func player_add_coin(coin: Coin) -> void:
 	player.add_coin(coin)
+
+
+func _on_reset_to_main_menu_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")

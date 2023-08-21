@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkf13w78s04vh"]
+[gd_scene load_steps=10 format=3 uid="uid://dkf13w78s04vh"]
 
 [ext_resource type="Script" path="res://code/battlefield.gd" id="1_5g3mx"]
 [ext_resource type="PackedScene" uid="uid://x32nf6rqxaa5" path="res://scenes/UI/choice_scene_coin.tscn" id="2_nbfrv"]
 [ext_resource type="Script" path="res://code/UI/coins_hbox.gd" id="3_fm4v5"]
+[ext_resource type="Texture2D" uid="uid://sjy46x852mt4" path="res://art/Reset/normal.png" id="3_th0id"]
+[ext_resource type="Texture2D" uid="uid://bk6bvvai6xmh3" path="res://art/Reset/pressed.png" id="4_0ei4d"]
 [ext_resource type="PackedScene" uid="uid://bh7g0ayrjj5c2" path="res://scenes/UI/health_bar.tscn" id="4_51fdp"]
+[ext_resource type="Texture2D" uid="uid://3tuwy06sc0k8" path="res://art/Reset/hover.png" id="5_e7y1u"]
 [ext_resource type="PackedScene" uid="uid://pdhajmhtyjha" path="res://scenes/UI/combat_history.tscn" id="5_tf41l"]
 [ext_resource type="Script" path="res://code/UI/coin_button.gd" id="6_fc31l"]
 
@@ -35,11 +38,14 @@ offset_right = 1474.0
 offset_bottom = 614.0
 scale = Vector2(-1, 1)
 
-[node name="CurrentCoins" type="Label" parent="UI/UI"]
+[node name="ResetToMainMenu" type="TextureButton" parent="UI/UI"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Current coins:"
+offset_right = 256.0
+offset_bottom = 256.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("3_th0id")
+texture_pressed = ExtResource("4_0ei4d")
+texture_hover = ExtResource("5_e7y1u")
 
 [node name="CombatHistory" parent="UI/UI" instance=ExtResource("5_tf41l")]
 layout_mode = 1
@@ -102,4 +108,5 @@ position = Vector2(184, 526)
 [node name="EnemyLocation" type="Node2D" parent="."]
 position = Vector2(978, 498)
 
+[connection signal="pressed" from="UI/UI/ResetToMainMenu" to="." method="_on_reset_to_main_menu_pressed"]
 [connection signal="coin_selected" from="UI/UI/ChoiceSceneCoin" to="." method="player_add_coin"]
