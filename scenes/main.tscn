@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://iejmmnbiii2j"]
+[gd_scene load_steps=8 format=3 uid="uid://iejmmnbiii2j"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_u4f47"]
 [ext_resource type="PackedScene" uid="uid://cqmtn0q37ttcv" path="res://scenes/enemies/Willo.tscn" id="2_djhtq"]
 [ext_resource type="PackedScene" uid="uid://8joir45it7pu" path="res://scenes/UI/map/map.tscn" id="2_ehh34"]
 [ext_resource type="Script" path="res://code/UI/map/combat_encounter.gd" id="3_ws0bv"]
+[ext_resource type="Texture2D" uid="uid://u0j0g036hedw" path="res://art/Coins/Heads.png" id="5_a2d53"]
+[ext_resource type="Texture2D" uid="uid://bi6h8uyhcs3jn" path="res://art/Coins/Tails.png" id="6_ddmfh"]
 
 [sub_resource type="Resource" id="Resource_nwwg6"]
 script = ExtResource("3_ws0bv")
@@ -20,4 +22,20 @@ layer = 2
 unique_name_in_owner = true
 visible = false
 
+[node name="Heads" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(652, 399)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_a2d53")
+
+[node name="Tails" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(631, 405)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_ddmfh")
+
+[node name="CoinTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="encounter_chosen" from="CanvasLayer/Map" to="." method="_on_map_encounter_chosen"]
+[connection signal="timeout" from="CoinTimer" to="." method="_on_coin_timer_timeout"]

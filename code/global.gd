@@ -2,7 +2,8 @@ extends Node
 
 
 signal action_performed(action: String)
-
+signal landed_on_heads
+signal landed_on_tails
 
 # variables
 # list of all possible coins. Might not end up needing this
@@ -22,3 +23,7 @@ func push_action(act: String) -> void:
 ## lazy ;).
 static func get_health_component(node: Node) -> HealthComponent:
 	return node.get_node("HealthComponent")
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("click"):
+		SfxManager.coin_flip.play()

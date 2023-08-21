@@ -9,6 +9,9 @@ var player: Node
 
 
 func _ready() -> void:
+	Global.landed_on_heads.connect(landed_on_heads)
+	Global.landed_on_tails.connect(landed_on_tails)
+	
 	player = preload("res://scenes/player.tscn").instantiate()
 	use_encounter(first_encounter)
 	# give the menu music time to fade out
@@ -35,3 +38,18 @@ func use_encounter(enc: Encounter) -> void:
 
 func _on_map_encounter_chosen(enc: Encounter) -> void:
 	use_encounter(enc)
+
+func landed_on_heads():
+	$Heads.show()
+	$CoinTimer.start()
+	
+func landed_on_tails():
+	$Tails.show()
+	$CoinTimer.start()
+
+
+
+
+func _on_coin_timer_timeout() -> void:
+	$Heads.hide()
+	$Tails.hide()

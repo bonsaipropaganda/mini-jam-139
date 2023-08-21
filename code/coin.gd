@@ -1,7 +1,6 @@
 class_name Coin
 extends Resource
 
-
 const NullAction := preload("res://code/combat/actions/action.gd")
 
 
@@ -17,6 +16,8 @@ const NullAction := preload("res://code/combat/actions/action.gd")
 
 func flip() -> Action:
 	if Global.rng.randf() <= head_weight:
+		Global.landed_on_heads.emit()
 		return head_action
 	else:
+		Global.landed_on_tails.emit()
 		return tail_action
