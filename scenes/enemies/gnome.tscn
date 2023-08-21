@@ -21,8 +21,8 @@ script = ExtResource("5_n171i")
 amount = 4
 
 [node name="Gnome" type="Sprite2D"]
-position = Vector2(640, 357)
-scale = Vector2(0.666667, 0.706693)
+position = Vector2(-36, -27)
+scale = Vector2(0.364389, 0.344488)
 texture = ExtResource("1_m3cym")
 script = ExtResource("2_xh6nq")
 possible_actions = Array[Resource("res://code/combat/actions/action.gd")]([SubResource("Resource_5c42b"), SubResource("Resource_k0m6r"), SubResource("Resource_mfwqr")])

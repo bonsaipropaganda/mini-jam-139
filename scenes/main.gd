@@ -13,8 +13,9 @@ func _ready() -> void:
 	use_encounter(first_encounter)
 	# give the menu music time to fade out
 	await !MusicManager.music_playing
-	MusicManager.main_theme_1.play()
-	MusicManager.fade("in", MusicManager.main_theme_1)
+	if !MusicManager.main_theme_1.is_playing():
+		MusicManager.main_theme_1.play()
+		MusicManager.fade("in", MusicManager.main_theme_1)
 
 
 func use_encounter(enc: Encounter) -> void:

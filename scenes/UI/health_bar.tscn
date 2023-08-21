@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bh7g0ayrjj5c2"]
+[gd_scene load_steps=16 format=3 uid="uid://bh7g0ayrjj5c2"]
 
 [ext_resource type="Texture2D" uid="uid://4fie8386rv0j" path="res://art/HealthBar/empty_0001.png" id="1_im0rt"]
 [ext_resource type="Texture2D" uid="uid://rw4po4etcafu" path="res://art/HealthBar/empty_0002.png" id="2_j26ke"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://code/UI/health_bar.gd" id="9_6wbrh"]
 [ext_resource type="Texture2D" uid="uid://s30dyeb7ctbd" path="res://art/your health.png" id="10_1po43"]
 [ext_resource type="Texture2D" uid="uid://cgrxslar6cqmt" path="res://art/enemy indicator.png" id="11_u2fpt"]
+[ext_resource type="Texture2D" uid="uid://dgl8fi5fpq5w1" path="res://art/boss_indicator.png" id="12_1u8ji"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_4bntx"]
 frames = 4
@@ -68,6 +69,11 @@ texture = ExtResource("10_1po43")
 [node name="EnemyIndicator" type="Sprite2D" parent="."]
 position = Vector2(310, -366)
 texture = ExtResource("11_u2fpt")
+
+[node name="BossIndicator" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(122, -420)
+texture = ExtResource("12_1u8ji")
 
 [connection signal="value_changed" from="." to="." method="_on_value_changed"]
 [connection signal="value_changed" from="CurrentHealth" to="." method="_on_current_health_value_changed"]

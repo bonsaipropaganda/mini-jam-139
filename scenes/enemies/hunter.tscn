@@ -26,6 +26,8 @@ amount = 5
 script = ExtResource("6_60on1")
 
 [node name="Hunter" type="Sprite2D"]
+position = Vector2(-76, -16)
+scale = Vector2(0.477477, 0.47129)
 texture = ExtResource("1_yh0fx")
 script = ExtResource("2_261lh")
 possible_actions = Array[Resource("res://code/combat/actions/action.gd")]([SubResource("Resource_ewlx1"), SubResource("Resource_awn6p"), SubResource("Resource_tf6ba"), SubResource("Resource_dumcp")])
