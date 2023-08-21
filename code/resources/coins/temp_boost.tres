@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Coin" load_steps=9 format=3 uid="uid://ctc8jt6a0foku"]
+
+[ext_resource type="Script" path="res://code/coin.gd" id="1_16u5c"]
+[ext_resource type="Script" path="res://code/combat/actions/deal_damage.gd" id="1_xvpdb"]
+[ext_resource type="Script" path="res://code/combat/actions/empower.gd" id="2_410uy"]
+[ext_resource type="Script" path="res://code/combat/actions/multi_action.gd" id="3_mnci1"]
+
+[sub_resource type="Resource" id="Resource_d2or6"]
+script = ExtResource("1_xvpdb")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_cc7xl"]
+script = ExtResource("2_410uy")
+boost = 2
+duration = 3
+
+[sub_resource type="Resource" id="Resource_lbcuc"]
+script = ExtResource("3_mnci1")
+actions = Array[Resource("res://code/combat/actions/action.gd")]([SubResource("Resource_d2or6"), SubResource("Resource_cc7xl")])
+
+[sub_resource type="Resource" id="Resource_uwjoc"]
+script = ExtResource("2_410uy")
+boost = 2
+duration = 3
+
+[resource]
+script = ExtResource("1_16u5c")
+coin_name = "Temp boost"
+description = ""
+head_weight = 0.2
+head_action = SubResource("Resource_lbcuc")
+tail_action = SubResource("Resource_uwjoc")

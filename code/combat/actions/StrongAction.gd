@@ -1,4 +1,4 @@
-class_name StrongActionDealDamage
+class_name ActionStrongDealDamage
 extends Action
 
 

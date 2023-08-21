@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7lerwd370wwq"]
+
+[ext_resource type="PackedScene" uid="uid://1elca3hviyas" path="res://scenes/status_effects/status_effect.tscn" id="1_p3o7o"]
+[ext_resource type="Texture2D" uid="uid://d2ec0loly2od0" path="res://art/StatusEffects/Empower/empower.png" id="2_7oxql"]
+[ext_resource type="Script" path="res://code/combat/status_effects/empower.gd" id="3_oibw8"]
+
+[node name="Empower" instance=ExtResource("1_p3o7o")]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_7oxql")
+script = ExtResource("3_oibw8")
