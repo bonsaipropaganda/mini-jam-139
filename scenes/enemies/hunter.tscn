@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://code/combat/actions/Stare.gd" id="6_60on1"]
 [ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="6_jgn48"]
 [ext_resource type="PackedScene" uid="uid://i3fwwekparef" path="res://scenes/entity_animator.tscn" id="8_bhl78"]
-[ext_resource type="Script" path="res://scenes/enemies/victory.gd" id="9_50nhi"]
+[ext_resource type="Script" path="res://scenes/enemies/victory_screen.gd" id="9_kj3vl"]
 
 [sub_resource type="Resource" id="Resource_ewlx1"]
 script = ExtResource("3_kabjn")
@@ -40,9 +40,9 @@ max_health = 25
 
 [node name="EntityAnimator" parent="." instance=ExtResource("8_bhl78")]
 
-[node name="Victory" type="Node" parent="."]
-script = ExtResource("9_50nhi")
+[node name="Node" type="Node" parent="."]
+script = ExtResource("9_kj3vl")
 
-[connection signal="enemy_died" from="." to="Victory" method="_on_hunter_enemy_died"]
+[connection signal="enemy_died" from="." to="Node" method="_on_hunter_enemy_died"]
 [connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
 [connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]

@@ -84,3 +84,7 @@ func _on_health_component_die() -> void:
 func _on_health_component_take_damage() -> void:
 	$EntityAnimator.play("hurt")
 	SfxManager.enemy_hurt.play()
+
+
+func _on_enemy_died() -> void:
+	pass # Replace with function body.

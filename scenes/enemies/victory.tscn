@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbfh8x1d7bdxy"]
+[gd_scene load_steps=3 format=3 uid="uid://5u5ch2sn35bd"]
 
-[ext_resource type="Texture2D" uid="uid://djr51v4gbhgoe" path="res://art/Victory.png" id="1_0qdi3"]
+[ext_resource type="Texture2D" uid="uid://dwwuo20edgik6" path="res://art/Victory.png" id="1_0qdi3"]
 [ext_resource type="Script" path="res://scenes/gameover.gd" id="2_twf5v"]
 
 [node name="Victory" type="Sprite2D"]
@@ -10,6 +10,7 @@ texture = ExtResource("1_0qdi3")
 script = ExtResource("2_twf5v")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
 one_shot = true
 autostart = true
 
