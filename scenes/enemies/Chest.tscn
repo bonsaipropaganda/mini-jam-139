@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://bwfhs8dptfdq5"]
+
+[ext_resource type="Texture2D" uid="uid://c8x0dei7vlw2d" path="res://art/Enemies/Chest.png" id="1_1jhp3"]
+[ext_resource type="Script" path="res://code/enemies/enemy.gd" id="2_dt3hp"]
+[ext_resource type="Script" path="res://code/combat/actions/self_hurt.gd" id="3_7bnlu"]
+[ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="5_4cegs"]
+[ext_resource type="PackedScene" uid="uid://i3fwwekparef" path="res://scenes/entity_animator.tscn" id="6_hjx4h"]
+
+[sub_resource type="Resource" id="Resource_jxnc5"]
+script = ExtResource("3_7bnlu")
+amount = 2
+
+[node name="Chest" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_1jhp3")
+script = ExtResource("2_dt3hp")
+possible_actions = Array[Resource("res://code/combat/actions/action.gd")]([SubResource("Resource_jxnc5")])
+weights = Array[float]([1000.0])
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_4cegs")]
+starting_health = 1
+max_health = 1
+
+[node name="EntityAnimator" parent="." instance=ExtResource("6_hjx4h")]
+
+[connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
+[connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]

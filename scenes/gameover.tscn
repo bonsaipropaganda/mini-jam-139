@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://beqxekp5jnxia"]
+
+[ext_resource type="Texture2D" uid="uid://c8m2lp8q5jj2t" path="res://art/GameOver.png" id="1_55w10"]
+[ext_resource type="Script" path="res://scenes/gameover.gd" id="2_2c6re"]
+
+[node name="Gameover" type="Sprite2D"]
+position = Vector2(645.25, 361.5)
+scale = Vector2(0.727714, 0.660877)
+texture = ExtResource("1_55w10")
+script = ExtResource("2_2c6re")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

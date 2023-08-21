@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpi0wg1olwydk"]
+
+[ext_resource type="Texture2D" uid="uid://vn0gnqeh7onh" path="res://art/Enemies/GoblinV2.png" id="1_yl108"]
+[ext_resource type="Script" path="res://code/enemies/enemy.gd" id="2_aduaa"]
+[ext_resource type="Script" path="res://code/combat/actions/deal_damage.gd" id="3_eidbr"]
+[ext_resource type="Script" path="res://code/combat/actions/StrongAction.gd" id="4_fo5ea"]
+[ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="5_f7t5y"]
+[ext_resource type="PackedScene" uid="uid://i3fwwekparef" path="res://scenes/entity_animator.tscn" id="6_jrpwy"]
+
+[sub_resource type="Resource" id="Resource_n6mry"]
+script = ExtResource("3_eidbr")
+amount = 3
+
+[sub_resource type="Resource" id="Resource_xacd6"]
+script = ExtResource("4_fo5ea")
+amount = 5
+
+[node name="Goblin" type="Sprite2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_yl108")
+script = ExtResource("2_aduaa")
+possible_actions = Array[Resource("res://code/combat/actions/action.gd")]([SubResource("Resource_n6mry"), SubResource("Resource_xacd6")])
+weights = Array[float]([5.0, 1.0])
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_f7t5y")]
+starting_health = 10
+max_health = 10
+
+[node name="EntityAnimator" parent="." instance=ExtResource("6_jrpwy")]
+
+[connection signal="die" from="HealthComponent" to="." method="_on_health_component_die"]
+[connection signal="take_damage" from="HealthComponent" to="." method="_on_health_component_take_damage"]

@@ -1,17 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqmtn0q37ttcv"]
+[gd_scene load_steps=9 format=3 uid="uid://cqmtn0q37ttcv"]
 
 [ext_resource type="Script" path="res://code/enemies/enemy.gd" id="1_gdvk1"]
 [ext_resource type="Texture2D" uid="uid://b6tdgmy4ofyoc" path="res://art/Enemies/Willo.png" id="1_tpj7i"]
 [ext_resource type="Script" path="res://code/combat/actions/deal_damage.gd" id="2_go60f"]
 [ext_resource type="PackedScene" uid="uid://t0c7cg537fse" path="res://scenes/health_component.tscn" id="2_u8w1j"]
-[ext_resource type="PackedScene" uid="uid://i3fwwekparef" path="res://scenes/entity_animator.tscn" id="5_v6e67"]
 [ext_resource type="Script" path="res://code/combat/actions/StrongAction.gd" id="4_gkd5o"]
-
+[ext_resource type="PackedScene" uid="uid://i3fwwekparef" path="res://scenes/entity_animator.tscn" id="5_v6e67"]
 
 [sub_resource type="Resource" id="Resource_n6mry"]
 script = ExtResource("2_go60f")
-amount = 2
-attack_bonus = null
+amount = 3
 
 [sub_resource type="Resource" id="Resource_xacd6"]
 script = ExtResource("4_gkd5o")
