@@ -8,8 +8,8 @@ extends StatusEffect
 func _action_to_apply(act: Action) -> void:
 	if act is ActionDealDamage:
 		act.amount += boost
-	elif act is ActionStrongDealDamage:
-		act.amount += boost
+#	elif act is ActionStrongDealDamage:
+#		act.amount += boost
 
 
 func get_tooltip() -> String:
