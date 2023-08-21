@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Coin" load_steps=5 format=3 uid="uid://dg5q3posijd70"]
+
+[ext_resource type="Script" path="res://code/combat/actions/heal.gd" id="1_24dod"]
+[ext_resource type="Script" path="res://code/coin.gd" id="2_s8r1v"]
+
+[sub_resource type="Resource" id="Resource_eqvtd"]
+script = ExtResource("1_24dod")
+amount = 8
+
+[sub_resource type="Resource" id="Resource_p5rqs"]
+script = ExtResource("1_24dod")
+amount = 16
+
+[resource]
+script = ExtResource("2_s8r1v")
+coin_name = "Strong Heal"
+description = "Heads: heals 8
+Tails: heals 16"
+head_weight = 0.5
+head_action = SubResource("Resource_eqvtd")
+tail_action = SubResource("Resource_p5rqs")
